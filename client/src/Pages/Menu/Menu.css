@@ -1,0 +1,123 @@
+#menuPage {
+  width: 100%;
+  margin-top: 42px;
+}
+
+#menuPage .menuHeading {
+  padding: 40px 0 0 0;
+  text-align: center;
+}
+
+#menuPage .menuHeading h1 {
+  font-size: 40px;
+}
+
+#menuPage .menuHeading p {
+  width: 80%;
+  margin: 20px auto;
+}
+
+#menuPage .topSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 150px;
+}
+
+#menuPage .topSection .mealSelect {
+  margin: 0 50px;
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#menuPage .topSection .mealSelect .mealButton {
+  color: rgb(146, 145, 145);
+  padding: 10px 25px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+#menuPage .topSection .mealSelect .mealActive {
+  padding: 10px 25px;
+  color: black;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+/* css for button inactive to be added later */
+
+#menuPage .bottomSection {
+  margin: 20px 100px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  height: auto;
+}
+
+/* Food Card Component */
+#menuPage .bottomSection .foodCard {
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px 1px gray;
+  margin-top: 20px;
+  padding: 30px;
+}
+
+#menuPage .bottomSection .foodCard .img {
+  object-fit: cover;
+  margin: 15px;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+#menuPage .bottomSection .foodCard .img img {
+  margin-bottom: -10px;
+  height: auto;
+  width: 280px;
+}
+
+#menuPage .bottomSection .foodCard .content h1 {
+  font-size: 18px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 30px;
+}
+
+#menuPage .bottomSection .foodCard .content h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+#menuPage .bottomSection .foodCard .content p {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 600px) {
+  #menuPage .bottomSection {
+    margin: 20px;
+  }
+}
