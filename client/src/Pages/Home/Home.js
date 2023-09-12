@@ -123,7 +123,7 @@ function Home() {
             <div className="text-[30px] xl:text-[45px] text-center text-white lg:text-black font-bold">
               Your Favourite Food Delivered Hot & Fresh
             </div>
-            <p className="text-blue text-[14px] sm:text-[20px] 2xl:text-[30px] p-5 bg-black lg:bg-[#f6f6f6] bg-opacity-60 rounded-xl">
+            <p className="text-white lg:text-gray-700 text-[14px] sm:text-[20px] 2xl:text-[30px] p-5 bg-black lg:bg-[#f6f6f6] bg-opacity-60 rounded-xl">
               Healthy switcher chefs do all the prep work, like peeding,
               chopping & marinating, so you can cook a fresh food.
             </p>
