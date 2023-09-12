@@ -26,7 +26,7 @@ const Login = () => {
   const loginUser = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) return console.log("Fill all the fields");
+    if (!email || !password) return window.alert("Fill all the fields");
 
     const res = await fetch('/signin', {
       method: 'POST',
@@ -39,11 +39,13 @@ const Login = () => {
     });
 
     const data = await res.json();
-    if (data.status === 400 || !data) window.alert("Invalid Credential");
-    else if (data.status === 422) window.alert("Fill all the fields");
+
+    if (res.status === 400 || !data) window.alert(`${data.error}`);
+    else if (res.status === 422) window.alert(`${data.error}`);
     else {
-      window.alert("Login Successfull");
+      window.alert(`${data.message}`);
       navigate('/');
+      window.location.reload();
     }
   };
 

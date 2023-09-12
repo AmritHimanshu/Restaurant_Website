@@ -52,11 +52,12 @@ const Register = () => {
     })
 
     const data = await res.json();
-    console.log(data);
-    if (data.status === 422 || !data) window.alert("Invalid Registration");
+    
+    if (res.status === 422 || !data) window.alert(`${data.error}`);
     else {
-      window.alert("Registration successfull");
+      window.alert(`${data.message}`);
       navigate('/login');
+      window.location.reload();
     }
   }
 
