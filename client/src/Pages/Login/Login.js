@@ -18,8 +18,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [user, setUser] = useState();
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -51,7 +49,6 @@ const Login = () => {
     else if (res.status === 422) window.alert(`${data.error}`);
     else {
       window.alert("Signin successfully");
-      setUser(data);
       dispatch(login(
         data
       ));
