@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 import Footer from "../Footer/Footer";
 import loginImg from "./assets/login.svg";
+import { login } from "../../features/userSlice";
 
 const Login = () => {
 
@@ -11,9 +13,12 @@ const Login = () => {
   }, []);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [user, setUser] = useState();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -40,12 +45,18 @@ const Login = () => {
 
     const data = await res.json();
 
+    console.log(data)
+
     if (res.status === 400 || !data) window.alert(`${data.error}`);
     else if (res.status === 422) window.alert(`${data.error}`);
     else {
-      window.alert(`${data.message}`);
+      window.alert("Signin successfully");
+      setUser(data);
+      dispatch(login(
+        data
+      ));
       navigate('/');
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
