@@ -43,8 +43,6 @@ const Login = () => {
 
     const data = await res.json();
 
-    console.log(data)
-
     if (res.status === 400 || !data) window.alert(`${data.error}`);
     else if (res.status === 422) window.alert(`${data.error}`);
     else {
