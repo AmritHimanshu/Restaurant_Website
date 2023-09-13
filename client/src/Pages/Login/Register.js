@@ -12,12 +12,6 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleShowPassword = (e) => {
-    showPassword ? setShowPassword(false) : setShowPassword(true);
-  };
-
   const [user, setUser] = useState({
     name: '', email: '', phone: '', password: '', cpassword: ''
   });
