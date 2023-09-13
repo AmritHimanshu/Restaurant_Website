@@ -8,21 +8,14 @@ const PORT = process.env.PORT;
 
 require('./db/conn');
 
-// const User = require('./model/userSchema');
-
 app.use(express.json());
 
 app.use(require('./router/auth'));
 
 
-
-app.get('/', (req, res) => {
-    res.send(`This is home page`);
-});
-
-app.get('/about', (req, res) => {
-    res.send(`This is about page`);
-});
+// app.get('/about', (req, res) => {
+//     res.send(`This is about page`);
+// });
 
 app.get('/menu', (req, res) => {
     res.send(`This is menu page`);

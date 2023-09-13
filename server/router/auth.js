@@ -1,35 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const authenticate = require('../middleware/authenticate');
 
 require('../db/conn');
+
 const User = require('../model/userSchema');
+
+const cookieParser = require("cookie-parser");
+router.use(cookieParser());
+
 
 
 router.get('/', (req, res) => {
     res.send(`This is home page from router`);
 });
-
-// USING PROMISES
-// router.post('/register', (req, res) => {
-//     const { name, email, phone, password, cpassword } = req.body;
-
-//     if (!name || !email || !phone || !password || !cpassword) {
-//         return res.status(422).json({ error: "Fill all the fields" });
-//     }
-
-//     User.findOne({ email: email }).then((userExist) => {
-//         if (userExist) {
-//             return res.status(422).json({ error: "Email already Exist" });
-//         }
-
-//         const user = new User({ name, email, phone, password, cpassword });
-//         user.save().then(() => {
-//             res.status(201).json({ message: "User registered successfully" });
-//         }).catch((err) => res.status(500).json({ error: "Failed to register" }));
-//     }).catch(err => { console.log(err); });
-
-// })
 
 router.post('/register', async (req, res) => {
     // USING ASYNC-AWAIT
@@ -62,8 +47,8 @@ router.post('/register', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
-    
-    if (!email || !password) {return res.status(422).json({ error: "Fill all the fields" });}
+
+    if (!email || !password) { return res.status(422).json({ error: "Fill all the fields" }); }
 
     try {
         const userLogin = await User.findOne({ email: email });
@@ -71,12 +56,12 @@ router.post('/signin', async (req, res) => {
         if (userLogin) {
             const isMatch = await bcrypt.compare(password, userLogin.password);
 
-            const token = await userLogin.generateAuthToken();
+            const Token = await userLogin.generateAuthToken();
 
-            res.cookie("jwtoken",token, {
+            res.cookie("jwtoken", Token, {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true
-            })
+            });
 
             if (isMatch) {
                 // res.status(200).json({ message: "Signin successfully" });
@@ -92,6 +77,10 @@ router.post('/signin', async (req, res) => {
         console.log(error);
     }
 })
+
+router.get('/about', authenticate, (req, res) => {
+    res.send(`This is about page`);
+});
 
 
 module.exports = router;
