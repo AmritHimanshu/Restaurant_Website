@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FoodCard from "./components/FoodCard";
 import infoCardDetails from "./components/MenuList"
-
 import "../Menu/Menu.css";
 
 const Menu = () => {

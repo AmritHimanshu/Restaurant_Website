@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Slider from './Slider'; 
 import Card from './Card'; 
-import './AboutUs.css'; 
 import Footer from '../Footer/Footer';
+import './AboutUs.css'; 
 
 const AboutUs = () => {
 

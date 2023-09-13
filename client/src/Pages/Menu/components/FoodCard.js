@@ -1,15 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../Menu.css'
 
 const FoodCard = ({ id, image, title, price, func }) => {
-
-  const [addItem, setAddItem] = useState({
-    id: '',
-    image: '',
-    title: '',
-    quantity: '',
-    price: '',
-  });
 
   const handleOnClick = (e) => {
     // Update the item with the new data
@@ -21,30 +13,22 @@ const FoodCard = ({ id, image, title, price, func }) => {
       price: price,
     };
 
-    setAddItem(updatedItem);
-
     // Wait for the state update to complete, and then proceed
     setTimeout(() => {
-
       // Retrieve the items from localStorage
       let items = localStorage.getItem('items');
       let itemsObj;
-
       if (items == null) itemsObj = [];
       else itemsObj = JSON.parse(items);
-
       // Push the updated item to the items list
       if (itemsObj.find(element => element.id === id) === undefined) {
         itemsObj.push(updatedItem);
         localStorage.setItem('items', JSON.stringify(itemsObj));
       }
-
       func(itemsObj.length);
-
     }, 0);
 
   }
-
 
   return (
     <div className="">

@@ -19,8 +19,6 @@ import a2 from "./assets/a2.png";
 import a3 from "./assets/a3.jpg";
 import a4 from "./assets/a4.jpg";
 import Footer from "../Footer/Footer";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../features/userSlice";
 
 function Home() {
   useEffect(() => {
@@ -28,11 +26,6 @@ function Home() {
   }, []);
 
   const navigate = useNavigate();
-  // const user = useSelector(selectUser);
-  // console.log(user)
-  
-  // const [data, setData] = useState(user);
-  // console.log(data)
 
   const infoCardDetails = [
     {
