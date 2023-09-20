@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
 
 function OrderTrack() {
 
@@ -7,6 +9,8 @@ function OrderTrack() {
   }, []);
 
   const [addItem, setAddItem] = useState();
+
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('items'));
@@ -63,7 +67,7 @@ function OrderTrack() {
 
               <div className="space-y-1">
                 <div className="text-gray-500">DELIVER TO</div>
-                <div className="font-bold">HOME</div>
+                <div className="font-bold">{user?.name}</div>
                 <div className="text-gray-500">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est,
                   molestias.

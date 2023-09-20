@@ -8,11 +8,37 @@ import loginImg from "./assets/login.svg";
 
 const Login = () => {
 
+  const navigate = useNavigate();
+
+  const callLogOut = async () => {
+    try {
+      const res = await fetch('/logout', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      });
+
+      const data = await res.json();
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    callLogOut();
   }, []);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");

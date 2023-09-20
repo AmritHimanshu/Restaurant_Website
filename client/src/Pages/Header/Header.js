@@ -21,7 +21,7 @@ function NavBar() {
 
   const handleClickAvatar = () => {
     setClick(!click);
-    // dispatch(logout());
+    dispatch(logout());
   }
 
   return (
