@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../../features/userSlice";
 import { FaHamburger } from "react-icons/fa";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiSolidUserCircle } from "react-icons/bi";
@@ -9,9 +11,19 @@ import { FaCartPlus } from "react-icons/fa";
 import "./Header.css";
 
 function NavBar() {
+
   const [click, setClick] = useState(false);
+  const dispatch = useDispatch();
+
+  const user = useSelector(selectUser);
 
   const handleClick = () => setClick(!click);
+
+  const handleClickAvatar = () => {
+    setClick(!click);
+    // dispatch(logout());
+  }
+
   return (
     <>
       <nav className="navbar">
@@ -74,10 +86,10 @@ function NavBar() {
               </NavLink>
             </li>
 
-            <li className="header-icon-li flex">
+            <li className="header-icon-li flex items-center">
               <NavLink
                 to="/cart"
-                className="header-icon relative"
+                className="header-icon"
                 onClick={handleClick}
               >
                 <FaCartPlus />
@@ -86,9 +98,9 @@ function NavBar() {
               <NavLink
                 to="/login"
                 className="header-icon"
-                onClick={handleClick}
+                onClick={handleClickAvatar}
               >
-                <BiSolidUserCircle />
+                {user ? <div className="px-2 bg-gray-400 rounded-full">{user.name[0]}</div> : <BiSolidUserCircle />}
               </NavLink>
             </li>
           </ul>

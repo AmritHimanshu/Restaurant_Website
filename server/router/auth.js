@@ -73,7 +73,6 @@ router.post('/signin', async (req, res) => {
 })
 
 router.get('/home', authenticate, (req, res) => {
-    console.log(req.rootUser.email);
     res.send(req.rootUser);
 });
 

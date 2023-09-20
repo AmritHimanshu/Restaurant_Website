@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { GiHotMeal } from "react-icons/gi";
 import { GiNoodles } from "react-icons/gi";
@@ -22,33 +22,8 @@ import Footer from "../Footer/Footer";
 
 function Home() {
 
-  const callHomePage = async () => {
-    try {
-      const res = await fetch('/home', {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include'
-      });
-
-      const data = await res.json();
-
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        throw error;
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    callHomePage();
   }, []);
 
   const navigate = useNavigate();

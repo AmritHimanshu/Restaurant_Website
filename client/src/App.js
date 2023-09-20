@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { login, selectUser } from "./features/userSlice";
 import Home from "./Pages/Home/Home";
 import Menu from "./Pages/Menu/Menu";
 import Gallery from "./Pages/Gallery/Gallery";
@@ -17,6 +20,40 @@ import OrderTrack from "./Pages/OrderTrack/OrderTrack";
 import "./App.css";
 
 function App() {
+
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+
+  const callHomePage = async () => {
+    try {
+      const res = await fetch('/home', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      });
+
+      const data = await res.json();
+      dispatch(login(
+        data
+      ));
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    {!user && callHomePage();}
+  }, []);
+
   return (
     <>
       <div className="">

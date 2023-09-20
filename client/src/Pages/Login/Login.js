@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { login } from "../../features/userSlice";
 import Footer from "../Footer/Footer";
 import loginImg from "./assets/login.svg";
 
@@ -11,6 +13,7 @@ const Login = () => {
   }, []);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,6 +46,9 @@ const Login = () => {
     else if (res.status === 422) window.alert(`${data.error}`);
     else {
       window.alert("Signin successfully");
+      dispatch(login(
+        data
+      ));
       navigate('/');
       window.location.reload();
     }
