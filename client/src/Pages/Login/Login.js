@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { login } from "../../features/userSlice";
 import Footer from "../Footer/Footer";
 import loginImg from "./assets/login.svg";
 
@@ -13,7 +11,6 @@ const Login = () => {
   }, []);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,18 +37,14 @@ const Login = () => {
         email, password
       })
     });
-
     const data = await res.json();
 
     if (res.status === 400 || !data) window.alert(`${data.error}`);
     else if (res.status === 422) window.alert(`${data.error}`);
     else {
       window.alert("Signin successfully");
-      dispatch(login(
-        data
-      ));
       navigate('/');
-      // window.location.reload();
+      window.location.reload();
     }
   };
 
@@ -69,31 +62,36 @@ const Login = () => {
 
           <form method="POST" className="flex flex-col items-center justify-center space-y-5">
             <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label className="text-white text-lg">
+              <label htmlFor="email" className="text-white text-lg">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
                 className="px-2 sm:px-5 py-1 sm:py-2 text-black text-lg outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
                 type="email"
+                name="email"
+                id="email"
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="Your Email"
+                autoComplete="false"
                 required
               />
             </div>
 
             <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label className="text-white text-lg">
+              <label htmlFor="password" className="text-white text-lg">
                 Password <span className="text-red-500">*</span>
               </label>
               <div className="pr-2 w-full flex items-center bg-white">
                 <input
                   className="px-2 sm:px-5 py-1 sm:py-2 w-full text-black text-lg outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
                   type="text"
+                  name="password"
                   id="password"
                   value={password}
                   onChange={handlePasswordChange}
                   placeholder="Your Password"
+                  autoComplete="false"
                   required
                 />
               </div>

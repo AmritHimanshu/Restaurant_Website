@@ -69,37 +69,41 @@ const Register = () => {
 
           <form method="POST" className="flex flex-col items-center justify-center space-y-5">
             <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label className="text-white text-lg">
+              <label htmlFor="name" className="text-white text-lg">
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
                 className="px-2 sm:px-5 py-1 sm:py-2 text-black text-lg  outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
                 type="text"
-                name="name"
+                name="name" 
+                id="name" 
                 value={user.name}
                 onChange={handleInputs}
                 placeholder="Enter Your Name"
+                autoComplete="false"
                 required
               />
             </div>
 
             <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label className="text-white text-lg">
+              <label htmlFor="email" className="text-white text-lg">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
                 className="px-2 sm:px-5 py-1 sm:py-2 text-black text-lg  outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
                 type="email"
                 name="email"
+                id="email"
                 value={user.email}
                 onChange={handleInputs}
                 placeholder="Your Email"
+                autoComplete="false"
                 required
               />
             </div>
 
             <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label className="text-white text-lg">
+              <label htmlFor="phone" className="text-white text-lg">
                 Mobile <span className="text-red-500">*</span>
               </label>
               <input
@@ -107,15 +111,17 @@ const Register = () => {
                 type="tel"
                 pattern="[7-9]{1}[0-9]{9}"
                 name="phone"
+                id="phone"
                 value={user.phone}
                 onChange={handleInputs}
                 placeholder="Your Mobile Number"
+                autoComplete="false"
                 required
               />
             </div>
 
             <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label className="text-white text-lg">
+              <label htmlFor="password" className="text-white text-lg">
                 Password <span className="text-red-500">*</span>
               </label>
               <div className="pr-2 w-full flex items-center bg-white ">
@@ -127,22 +133,25 @@ const Register = () => {
                   value={user.password}
                   onChange={handleInputs}
                   placeholder="Your Password"
+                  autoComplete="false"
                   required
                 />
               </div>
             </div>
 
             <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label className="text-white text-lg">
+              <label htmlFor="cpassword" className="text-white text-lg">
                 Confirm Password <span className="text-red-500">*</span>
               </label>
               <input
                 className="px-2 sm:px-5 py-1 sm:py-2 text-black text-lg  outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
                 type="password"
                 name="cpassword"
+                id="cpassword"
                 value={user.cpassword}
                 onChange={handleInputs}
                 placeholder="Your Confirm Password"
+                autoComplete="false"
                 required
               />
             </div>

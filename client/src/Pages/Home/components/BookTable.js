@@ -37,6 +37,7 @@ const BookTable = () => {
       >
         <input
           type="number"
+          name="number"
           placeholder="Number of guests"
           value={noOfGuests}
           required
@@ -46,13 +47,14 @@ const BookTable = () => {
         <div className='flex min-w-[100%] space-x-5'>
           <input
             type="date"
+            name="date"
             value={bookingDate}
             required
             className="outline-0 p-2 border-2 border-gray-600 text-md xl:text-lg w-full placeholder:text-sm"
             onChange={(ev) => setBookingDate(ev.target.value)}
           />
           <select
-            name=""
+            name="mealtype"
             id=""
             value={mealType}
             required
@@ -66,6 +68,7 @@ const BookTable = () => {
         </div>
         <textarea
           placeholder="Message"
+          name="message"
           value={message}
           className="outline-0 p-2 border-2 border-gray-600 text-md xl:text-lg w-full resize-none rounded-none placeholder:text-sm"
           onChange={(ev) => setMessage(ev.target.value)}

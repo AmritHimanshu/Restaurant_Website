@@ -21,8 +21,34 @@ import a4 from "./assets/a4.jpg";
 import Footer from "../Footer/Footer";
 
 function Home() {
+
+  const callHomePage = async () => {
+    try {
+      const res = await fetch('/home', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      });
+
+      const data = await res.json();
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    callHomePage();
   }, []);
 
   const navigate = useNavigate();
@@ -121,7 +147,7 @@ function Home() {
         <div className="h-[100vh] px-10 xl:w-[52%] flex flex-col justify-center bg-[url(https://w0.peakpx.com/wallpaper/176/588/HD-wallpaper-indian-food-breakfast-healthy.jpg)] lg:bg-none bg-auto sm:bg-cover bg-no-repeat bg-top lg:bg-left">
           <div className="space-y-10 text-center">
             <div className="text-[30px] xl:text-[45px] text-center text-white lg:text-black font-bold">
-              Your Favourite Food Delivered Hot & Fresh 
+              Your Favourite Food Delivered Hot & Fresh
             </div>
             <p className="text-white lg:text-gray-700 text-[14px] sm:text-[20px] 2xl:text-[30px] p-5 bg-black lg:bg-[#f6f6f6] bg-opacity-60 rounded-xl">
               Healthy switcher chefs do all the prep work, like peeding,

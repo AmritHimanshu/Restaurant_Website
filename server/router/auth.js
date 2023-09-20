@@ -11,11 +11,6 @@ const cookieParser = require("cookie-parser");
 router.use(cookieParser());
 
 
-
-router.get('/', (req, res) => {
-    res.send(`This is home page from router`);
-});
-
 router.post('/register', async (req, res) => {
     // USING ASYNC-AWAIT
     const { name, email, phone, password, cpassword } = req.body;
@@ -66,7 +61,6 @@ router.post('/signin', async (req, res) => {
             if (isMatch) {
                 // res.status(200).json({ message: "Signin successfully" });
                 res.status(200).json(userLogin)
-                console.log(userLogin);
             }
             else {
                 res.status(400).json({ error: "Invalid Credentials" });
@@ -78,8 +72,9 @@ router.post('/signin', async (req, res) => {
     }
 })
 
-router.get('/about', authenticate, (req, res) => {
-    res.send(`This is about page`);
+router.get('/home', authenticate, (req, res) => {
+    console.log(req.rootUser.email);
+    res.send(req.rootUser);
 });
 
 
