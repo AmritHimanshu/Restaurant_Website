@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Footer from "../Footer/Footer";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
+import Footer from "../Footer/Footer";
 
 const Form = () => {
 
@@ -11,7 +10,6 @@ const Form = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const navigate = useNavigate();
   const user = useSelector(selectUser);
 
   const [fullName, setFullName] = useState("");
@@ -21,7 +19,6 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/payment");
   };
 
   return (
