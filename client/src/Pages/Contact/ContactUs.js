@@ -2,18 +2,22 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
 
 const Form = () => {
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const navigate = useNavigate();
+  const user = useSelector(selectUser);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
-
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +26,7 @@ const Form = () => {
 
   return (
     <div className="">
-      <div className="mt-40 w-[350px] sm:w-[700px] lg:w-[800px] xl:w-[1050px] m-auto p-5 lg:p-16 xl:p-10 bg-white rounded-xl shadow-xl">
+      <div className="mt-40 mb-20 w-[350px] sm:w-[700px] lg:w-[800px] xl:w-[1050px] m-auto p-5 lg:p-16 xl:p-10 bg-white rounded-xl shadow-xl">
         <h2 className="text-blue font-bold text-2xl pb-5 text-center">Contact Us</h2>
         <div className="flex flex-col xl:flex-row items-center justify-between">
           <div>
@@ -33,52 +37,60 @@ const Form = () => {
             />
           </div>
 
-          <div classNam="mt-40 lg:w-[650px] m-auto p-5 xl:p-10">
+          <div>
             <form onSubmit={handleSubmit}>
               <div className="mb-[15px] space-y-2">
-                <label className="text-lg text-gray-600">
+                <label htmlFor="name" className="text-lg text-gray-600">
                   Full Name <span className="text-[red]">*</span>
                 </label>
                 <input
                   type="text"
-                  value={fullName}
+                  id="name"
+                  value={user?.name || fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
+                  autoComplete='false'
                   className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
                 />
               </div>
               <div className="mb-[15px] space-y-2">
-                <label className="text-lg text-gray-600">
+                <label htmlFor="email" className="text-lg text-gray-600">
                   Email Id <span className="text-[red]">*</span>
                 </label>
                 <input
                   type="email"
-                  value={email}
+                  id="email"
+                  value={user?.email || email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  autoComplete='false'
                   className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
                 />
               </div>
               <div className="mb-[15px] space-y-2">
-                <label className="text-lg text-gray-600">
+                <label htmlFor="phone" className="text-lg text-gray-600">
                   Phone Number <span className="text-[red]">*</span>
                 </label>
                 <input
                   type="text"
-                  value={phone}
+                  id="phone"
+                  value={user?.phone || phone}
                   onChange={(e) => setPhone(e.target.value)}
                   required
+                  autoComplete='false'
                   className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
                 />
               </div>
               <div className="mb-[15px] space-y-2">
-                <label className="text-lg text-gray-600">
+                <label htmlFor="message" className="text-lg text-gray-600">
                   Message <span className="text-[red]">*</span>
                 </label>
                 <textarea
                   value={message}
+                  id="message"
                   onChange={(e) => setMessage(e.target.value)}
                   required
+                  autoComplete='false'
                   className="outline-0 w-full p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm resize-none rounded-none"
                 />
               </div>
@@ -93,7 +105,7 @@ const Form = () => {
         </div>
       </div>
 
-      <section className="my-20 w-[350px] sm:w-[750px] lg:w-[900px] xl:w-[1050px] 2xl:w-[1700px] m-auto">
+      {/* <section className="my-20 w-[350px] sm:w-[750px] lg:w-[900px] xl:w-[1050px] 2xl:w-[1700px] m-auto">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7505191.250260705!2d72.14717736929796!3d23.292375867405138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398da934d2d9da5b%3A0x6119226bcfec4bad!2sHOTEL%20YASH!5e0!3m2!1sen!2sin!4v1688574970960!5m2!1sen!2sin"
           width={"100%"}
@@ -105,7 +117,7 @@ const Form = () => {
         >
           {" "}
         </iframe>
-      </section>
+      </section> */}
 
       <Footer />
     </div>

@@ -73,7 +73,7 @@ router.post('/signin', async (req, res) => {
 })
 
 router.get('/home', authenticate, (req, res) => {
-    res.send(req.rootUser);
+    res.status(200).send(req.rootUser);
 });
 
 router.get('/logout', (req, res) => {
