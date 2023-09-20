@@ -8,8 +8,6 @@ import loginImg from "./assets/login.svg";
 
 const Login = () => {
 
-  const navigate = useNavigate();
-
   const callLogOut = async () => {
     try {
       const res = await fetch('/logout', {
@@ -39,7 +37,9 @@ const Login = () => {
     callLogOut();
   }, []);
 
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -47,7 +47,7 @@ const Login = () => {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-
+  
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
