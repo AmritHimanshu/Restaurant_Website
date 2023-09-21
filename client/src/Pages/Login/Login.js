@@ -13,10 +13,10 @@ const Login = () => {
       const res = await fetch('/logout', {
         method: 'GET',
         headers: {
-          Accept: 'application/json',
+          Accept: 'application/json', // For cookies
           'Content-Type': 'application/json'
         },
-        credentials: 'include'
+        credentials: 'include' // For tokens
       });
 
       const data = await res.json();

@@ -59,7 +59,6 @@ router.post('/signin', async (req, res) => {
             });
 
             if (isMatch) {
-                // res.status(200).json({ message: "Signin successfully" });
                 res.status(200).json(userLogin)
             }
             else {
@@ -72,7 +71,18 @@ router.post('/signin', async (req, res) => {
     }
 })
 
-router.get('/home', authenticate, (req, res) => {
+router.post('/contact', (req, res) => {
+    const { name, email, phone, message } = req.body;
+
+    // console.log(name);
+    // console.log(email);
+    // console.log(phone);
+    // console.log(message);
+
+    res.status(200).send("Hii this is contact us from backend");
+});
+
+router.get('/getData', authenticate, (req, res) => {
     res.status(200).send(req.rootUser);
 });
 

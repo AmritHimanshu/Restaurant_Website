@@ -1,24 +1,59 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../features/userSlice";
 import Footer from "../Footer/Footer";
 
 const Form = () => {
 
+  const [userData, setUserData] = useState({ name: '', email: '', phone: '', message: '' });
+
+  const getData = async () => {
+    try {
+      const res = await fetch('/getData', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+
+      const data = await res.json();
+      setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    getData();
   }, []);
 
-  const user = useSelector(selectUser);
+  const handleInputs = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserData({ ...userData, [name]: value })
+  }
 
-  const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { name, email, phone, message } = userData;
+
+    const res = await fetch('/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+
+      })
+    })
+
+    const data = await res.json();
   };
 
   return (
@@ -35,7 +70,7 @@ const Form = () => {
           </div>
 
           <div>
-            <form onSubmit={handleSubmit}>
+            <form method="POST" onSubmit={handleSubmit}>
               <div className="mb-[15px] space-y-2">
                 <label htmlFor="name" className="text-lg text-gray-600">
                   Full Name <span className="text-[red]">*</span>
@@ -43,8 +78,9 @@ const Form = () => {
                 <input
                   type="text"
                   id="name"
-                  value={user?.name || fullName}
-                  onChange={(e) => setFullName(e.target.value)}
+                  name="name"
+                  value={userData?.name}
+                  onChange={handleInputs}
                   required
                   autoComplete='false'
                   className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
@@ -57,8 +93,9 @@ const Form = () => {
                 <input
                   type="email"
                   id="email"
-                  value={user?.email || email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
+                  value={userData?.email}
+                  onChange={handleInputs}
                   required
                   autoComplete='false'
                   className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
@@ -71,8 +108,9 @@ const Form = () => {
                 <input
                   type="text"
                   id="phone"
-                  value={user?.phone || phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  name="phone"
+                  value={userData?.phone}
+                  onChange={handleInputs}
                   required
                   autoComplete='false'
                   className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
@@ -83,9 +121,10 @@ const Form = () => {
                   Message <span className="text-[red]">*</span>
                 </label>
                 <textarea
-                  value={message}
+                  value={userData?.message}
                   id="message"
-                  onChange={(e) => setMessage(e.target.value)}
+                  name="message"
+                  onChange={handleInputs}
                   required
                   autoComplete='false'
                   className="outline-0 w-full p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm resize-none rounded-none"
