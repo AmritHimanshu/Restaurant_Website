@@ -59,7 +59,7 @@ router.post('/signin', async (req, res) => {
             });
 
             if (isMatch) {
-                res.status(200).json(userLogin)
+                res.status(200).json(userLogin);
             }
             else {
                 res.status(400).json({ error: "Invalid Credentials" });
@@ -71,15 +71,24 @@ router.post('/signin', async (req, res) => {
     }
 })
 
-router.post('/contact', (req, res) => {
+router.post('/contact', async (req, res) => {
     const { name, email, phone, message } = req.body;
 
-    // console.log(name);
-    // console.log(email);
-    // console.log(phone);
-    // console.log(message);
+    if (!name || !email || !phone || !message) { return res.status(422).json({ error: "Fill all the fields" }); }
 
-    res.status(200).send("Hii this is contact us from backend");
+    try {
+        const userContact = await User.findOne({ email: email });
+
+        if (userContact) {
+            const userMessage = await userContact.addMessage(message);
+            res.status(200).json({ message: "Message sent successfully" });
+        }
+        else {
+            res.status(400).json({ error: "User not Logged in" });
+        }
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 router.get('/getData', authenticate, (req, res) => {

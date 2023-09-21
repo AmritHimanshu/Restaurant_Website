@@ -49,11 +49,19 @@ const Form = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-
+        name, email, phone, message
       })
     })
 
     const data = await res.json();
+    if (res.status !== 200 || !data) {
+      alert(`${data.error}`);
+      setUserData({ ...userData, message: '' });
+    }
+    else {
+      alert(`${data.message}`);
+      setUserData({ ...userData, message: '' });
+    }
   };
 
   return (

@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../../features/userSlice";
 import { NavLink, Link } from "react-router-dom";
 import { FaHamburger } from "react-icons/fa";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -10,42 +12,18 @@ import "./Header.css";
 
 function NavBar() {
 
+  const dispatch = useDispatch();
+
   const [click, setClick] = useState(false);
 
-  const [userData, setUserData] = useState();
+  const user = useSelector(selectUser);
 
   const handleClick = () => setClick(!click);
 
   const handleClickAvatar = () => {
     setClick(!click);
-    setUserData(null);
+    dispatch(logout());
   }
-
-  const getData = async () => {
-    try {
-      const res = await fetch('/getData', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-
-      const data = await res.json();
-      setUserData(data);
-
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        throw error;
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
 
   return (
     <>
@@ -123,7 +101,7 @@ function NavBar() {
                 className="header-icon"
                 onClick={handleClickAvatar}
               >
-                {userData ? <div className="px-2 bg-gray-400 rounded-full" title="Log Out">{userData.name[0]}</div> : <BiSolidUserCircle title="Log In" />}
+                {user ? <div className="px-2 bg-gray-400 rounded-full" title="Log Out">{user.name[0]}</div> : <BiSolidUserCircle title="Log In" />}
               </NavLink>
             </li>
           </ul>
