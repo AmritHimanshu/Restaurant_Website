@@ -68,7 +68,7 @@ function Footer() {
               alt="Location"
               className="w-[30px] h-[30px]"
             />
-            <div>Near Girja Apartment, Bazaar Samiti, Saketpuri, Patna-16</div>
+            <div>Lorem ipsum, dolor sit amet, consectetur adipisicing, India</div>
           </div>
 
           <div className="text-sm my-4 flex space-x-2">
@@ -77,7 +77,7 @@ function Footer() {
               alt="Phone"
               className="w-[30px] h-[30px]"
             />
-            <div>(+91) 94857362536 / (+91) 8746392882</div>
+            <div>(+91) 9876543201 / (+91) 9876543210</div>
           </div>
 
           <div className="text-sm my-4 flex items-center space-x-2">
