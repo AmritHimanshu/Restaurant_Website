@@ -12,27 +12,21 @@ function Footer() {
             nemo voluptatum ad officia.
           </p>
           <div className="flex space-x-10 mt-10">
-            <a href="">
-              <img
-                src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-256.png"
-                alt=""
-                className="w-[50px] cursor-pointer"
-              />
-            </a>
-            <a href="">
-              <img
-                src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/facebook-256.png"
-                alt=""
-                className="w-[50px] cursor-pointer"
-              />
-            </a>
-            <a href="">
-              <img
-                src="https://cdn2.iconfinder.com/data/icons/threads-by-instagram/24/x-logo-twitter-new-brand-64.png"
-                alt=""
-                className="w-[50px] cursor-pointer"
-              />
-            </a>
+            <img
+              src="https://cdn3.iconfinder.com/data/icons/2018-social-media-logotypes/1000/2018_social_media_popular_app_logo_instagram-256.png"
+              alt=""
+              className="w-[50px] cursor-pointer"
+            />
+            <img
+              src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/facebook-256.png"
+              alt=""
+              className="w-[50px] cursor-pointer"
+            />
+            <img
+              src="https://cdn2.iconfinder.com/data/icons/threads-by-instagram/24/x-logo-twitter-new-brand-64.png"
+              alt=""
+              className="w-[50px] cursor-pointer"
+            />
           </div>
         </div>
 
