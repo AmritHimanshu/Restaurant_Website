@@ -92,6 +92,21 @@ router.post('/contact', async (req, res) => {
     }
 });
 
+router.post('/address', authenticate, async (req, res) => {
+    const { houseNumber, apartment, pincode, landmark, directions } = req.body;
+
+    if (!houseNumber || !apartment || !pincode) { return res.status(422).json({ error: "Fill all the fields" }); }
+
+    const address = 'H no. ' + houseNumber + ', ' + apartment + ', ' + landmark + ', ' + 'pincode - ' + pincode + ', ' + 'Direction : ' + directions;
+
+    try {
+        const userAddress = await req.rootUser.addAddress(address);
+        res.status(200).json({ message: "Done" });
+    } catch (error) {
+        console.log(error);
+    }
+})
+
 router.get('/getData', authenticate, (req, res) => {
     res.status(200).send(req.rootUser);
 });

@@ -42,7 +42,15 @@ const userSchema = new mongoose.Schema({
                 required: true,
             }
         }
-    ]
+    ],
+    addresses: [
+        {
+            address: {
+                type: String,
+                required: true
+            }
+        }
+    ],
 })
 
 
@@ -73,6 +81,17 @@ userSchema.methods.addMessage = async function (message) {
         this.messages = this.messages.concat({ message });
         await this.save();
         return this.messages;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// Saving address by the user
+userSchema.methods.addAddress = async function (address) {
+    try {
+        this.addresses = this.addresses.concat({ address });
+        await this.save();
+        return this.addresses;
     } catch (error) {
         console.log(error);
     }

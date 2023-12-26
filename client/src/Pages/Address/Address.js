@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Address() {
@@ -10,8 +10,29 @@ function Address() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const res = await fetch('/address', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        houseNumber, apartment, pincode, landmark, directions
+      })
+    });
+
+    const data = await res.json();
+
+    if (res.status !== 200 || !data) {
+      alert(`${data.error}`);
+    }
+    else {
+      // alert(`${data}`);
+      navigate("/payment");
+    }
+
     navigate("/payment");
   };
 
@@ -29,7 +50,7 @@ function Address() {
             type="text"
             value={houseNumber}
             onChange={(e) => setHouseNumber(e.target.value)}
-            require
+            required
             className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
           />
         </div>
@@ -41,7 +62,7 @@ function Address() {
             type="text"
             value={apartment}
             onChange={(e) => setApartment(e.target.value)}
-            require
+            required
             className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
           />
         </div>
@@ -53,7 +74,7 @@ function Address() {
             type="text"
             value={pincode}
             onChange={(e) => setPincode(e.target.value)}
-            require
+            
             className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
           />
         </div>
