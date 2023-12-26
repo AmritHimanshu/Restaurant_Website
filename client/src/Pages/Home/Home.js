@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { login } from "../../features/userSlice";
 import { GiHotMeal } from "react-icons/gi";
 import { GiNoodles } from "react-icons/gi";
 import { AiOutlineCoffee } from "react-icons/ai";
@@ -25,35 +23,9 @@ import Footer from "../Footer/Footer";
 function Home() {
   
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const getData = async () => {
-    try {
-      const res = await fetch('/getData', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      });
-
-      const data = await res.json();
-      
-      dispatch(login(data));
-
-
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        throw error;
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    getData();
   }, []);
 
 
