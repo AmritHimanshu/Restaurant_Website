@@ -15,12 +15,43 @@ import UpiTransaction from "./Pages/Payment/UpiTransaction";
 import CardsTransaction from "./Pages/Payment/CardsTransaction";
 import OrderTrack from "./Pages/OrderTrack/OrderTrack";
 import "./App.css";
-import { useSelector } from "react-redux";
-import { selectUser } from "./features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "./features/userSlice";
+import { useEffect } from "react";
 
 function App() {
 
   const user = useSelector(selectUser);
+
+  const dispatch = useDispatch();
+
+  const getData = async () => {
+    try {
+      const res = await fetch('/getData', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+
+      const data = await res.json();
+
+      dispatch(login(data));
+
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  },[])
 
   return (
     <>
