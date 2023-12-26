@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser } from "../../features/userSlice";
+import { login, logout, selectUser } from "../../features/userSlice";
 import { NavLink, Link } from "react-router-dom";
 import { FaHamburger } from "react-icons/fa";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -24,6 +24,34 @@ function NavBar() {
     setClick(!click);
     dispatch(logout());
   }
+
+  const getData = async () => {
+    try {
+      const res = await fetch('/getData', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+
+      const data = await res.json();
+
+      dispatch(login(data));
+
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
