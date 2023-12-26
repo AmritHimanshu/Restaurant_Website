@@ -8,9 +8,35 @@ const Menu = () => {
 
     const [cartLength, setCartLength] = useState();
 
+    const dataLen = (data) => {
+        setCartLength(data);
+    }
+
+    const [menu, setMenu] = useState();
+
+    const getMenu = async () => {
+        try {
+            const res = await fetch('/getMenu', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            const data = await res.json();
+            // console.log(data);
+            setMenu(data);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
 
         window.scrollTo(0, 0);
+
+        getMenu();
 
         const items = JSON.parse(localStorage.getItem('items'));
 
@@ -19,9 +45,6 @@ const Menu = () => {
         }
     }, []);
 
-    const dataLen = (data) => {
-        setCartLength(data);
-    }
 
     const [mealType, setMealType] = useState("Soup");
 
@@ -44,31 +67,24 @@ const Menu = () => {
 
             <div className="topSection">
                 <div className="mealSelect">
-                    <button value="Soup" className="mealButton mealActive" onClick={selectMealType} >Soup</button>
-                    <button value="Mutton" className="mealButton" onClick={selectMealType} >Mutton</button>
-                    <button value="Sea Food" className="mealButton" onClick={selectMealType}>Sea Food</button>
-                    <button value="Noodles" className="mealButton" onClick={selectMealType}>Noodles</button>
-                    <button value="Egg" className="mealButton" onClick={selectMealType}>Egg</button>
-                    <button value="Veg. Dishes" className="mealButton" onClick={selectMealType}>Veg. Dishes</button>
-                    <button value="Tandoor" className="mealButton" onClick={selectMealType}>Tandoor</button>
+
+                    {menu?.map((data, index) => (
+                        <button key={index} value={data.category} className={`mealButton `} onClick={selectMealType} >{data.category}</button>
+                    ))}
+
+                    {/* <button value="Soup" className="mealButton mealActive" onClick={selectMealType} >Soup</button> */}
                 </div>
             </div>
 
             <div className="mb-20 flex flex-col items-center space-y-5">
-                {infoCardDetails.map((food, index) => {
-                    if (food.type === mealType) {
-                        return (
-                            <FoodCard
-                                key={index}
-                                id={index}
-                                image={food.image}
-                                title={food.title}
-                                price={food.price}
-                                func={dataLen}
-                            />
-                        );
-                    }
-                })
+                {
+                    menu?.map((food, index) => {
+                        if (food.category === mealType) {
+                            return food.items?.map((item) => (
+                                <FoodCard key={item._id} id={item._id} title={item.name} price={item.price} image={item.image} func={dataLen} />
+                            ))
+                        }
+                    })
                 }
             </div>
 

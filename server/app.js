@@ -3,13 +3,14 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-app.use(cors({ origin: true }));
 
 dotenv.config({ path: './config.env' });
 
 const PORT = process.env.PORT;
 
 require('./db/conn');
+
+app.use(cors({ origin: true }));
 
 app.use(express.json());
 

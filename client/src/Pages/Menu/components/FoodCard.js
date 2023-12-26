@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Menu.css'
 
-const FoodCard = ({ id, image, title, price, func }) => {
+const FoodCard = ({ id, title, price, image, func }) => {
 
   const handleOnClick = (e) => {
     // Update the item with the new data

@@ -6,6 +6,7 @@ const authenticate = require('../middleware/authenticate');
 require('../db/conn');
 
 const User = require('../model/userSchema');
+const Menu = require('../model/menuSchema');
 
 const cookieParser = require("cookie-parser");
 router.use(cookieParser());
@@ -94,6 +95,15 @@ router.post('/contact', async (req, res) => {
 router.get('/getData', authenticate, (req, res) => {
     res.status(200).send(req.rootUser);
 });
+
+router.get('/getMenu', async (req, res) => {
+    try {
+        const menu = await Menu.find();
+        res.status(200).send(menu);
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 router.get('/logout', (req, res) => {
     res.clearCookie('jwtoken', { path: '/' });
