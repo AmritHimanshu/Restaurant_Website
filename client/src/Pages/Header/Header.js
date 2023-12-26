@@ -77,10 +77,11 @@ function NavBar() {
               </NavLink>
             </li>
 
-            <li className="header-icon-li flex items-center">
+            <li className="ml-5 w-[150px] flex items-center justify-between">
               {user && <NavLink
                 to="/cart"
-                className="header-icon"
+                className="header-icon hover:text-[30px] duration-300"
+                title="my cart"
                 onClick={handleClick}
               >
                 <FaCartPlus />
@@ -91,7 +92,7 @@ function NavBar() {
                 className="header-icon"
                 onClick={handleClickAvatar}
               >
-                {user ? <div className="px-3 py-1 ml-5 bg-indigo-300 text-blue rounded-full" title="Log Out">{user.name[0]}</div> : <div className="nav-item bg-indigo-300 text-blue text-lg px-2 ml-5 rounded-lg">Log In</div>}
+                {user ? <div className="px-3 py-1 bg-indigo-300 text-blue hover:bg-indigo-100 duration-300 rounded-full" title="Log Out">{user.name[0]}</div> : <div className="nav-item bg-indigo-300 hover:bg-indigo-100 duration-300 text-blue text-lg px-2 rounded-lg">Log In</div>}
               </NavLink>
             </li>
           </ul>
