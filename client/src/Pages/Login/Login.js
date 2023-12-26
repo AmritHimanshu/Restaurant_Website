@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { login } from "../../features/userSlice";
+import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import loginImg from "./assets/login.svg";
 
@@ -47,7 +48,7 @@ const Login = () => {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-  
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -81,81 +82,84 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="my-[189px] lg:my-36 flex items-center m-auto">
-        <div className="xl:w-[550px] hidden xl:block">
-          <img src={loginImg} alt="" />
-        </div>
-
-        <div className="mt-1 w-[350px] sm:w-[500px] md:w-[650px] py-10 rounded-xl bg-blue bg-opacity-90">
-          <div className="mb-10 text-white text-[30px] text-center font-bold">
-            Login Form
+    <>
+      <Header />
+      <div className="flex flex-col">
+        <div className="my-[189px] lg:my-36 flex items-center m-auto">
+          <div className="xl:w-[550px] hidden xl:block">
+            <img src={loginImg} alt="" />
           </div>
 
-          <form method="POST" className="flex flex-col items-center justify-center space-y-5">
-            <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label htmlFor="email" className="text-white text-lg">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                className="px-2 sm:px-5 py-1 sm:py-2 text-black text-lg outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
-                type="email"
-                name="email"
-                id="email"
-                value={email}
-                onChange={handleEmailChange}
-                placeholder="Your Email"
-                autoComplete="false"
-                required
-              />
+          <div className="mt-1 w-[350px] sm:w-[500px] md:w-[650px] py-10 rounded-xl bg-blue bg-opacity-90">
+            <div className="mb-10 text-white text-[30px] text-center font-bold">
+              Login Form
             </div>
 
-            <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
-              <label htmlFor="password" className="text-white text-lg">
-                Password <span className="text-red-500">*</span>
-              </label>
-              <div className="pr-2 w-full flex items-center bg-white">
+            <form method="POST" className="flex flex-col items-center justify-center space-y-5">
+              <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
+                <label htmlFor="email" className="text-white text-lg">
+                  Email <span className="text-red-500">*</span>
+                </label>
                 <input
-                  className="px-2 sm:px-5 py-1 sm:py-2 w-full text-black text-lg outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
-                  type="text"
-                  name="password"
-                  id="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  placeholder="Your Password"
+                  className="px-2 sm:px-5 py-1 sm:py-2 text-black text-lg outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
+                  type="email"
+                  name="email"
+                  id="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Your Email"
                   autoComplete="false"
                   required
                 />
               </div>
-            </div>
 
-            <button
-              className="p-2 px-5 text-black rounded-lg text-lg hover:scale-105 duration-300"
-              style={{
-                color: "#003366",
-                fontWeight: "500",
-                backgroundColor: "white",
-              }}
-              type="submit"
-              onClick={loginUser}
-            >
-              Login
-            </button>
-
-            <div className="flex space-x-2">
-              <div className="text-white">Don't have an account?</div>
-              <Link to="/register">
-                <div className="text-yellow-200 cursor-pointer hover:text-[yellow]">
-                  Register now
+              <div className="flex flex-col space-y-2 w-[300px] sm:w-[400px] md:w-[600px]">
+                <label htmlFor="password" className="text-white text-lg">
+                  Password <span className="text-red-500">*</span>
+                </label>
+                <div className="pr-2 w-full flex items-center bg-white">
+                  <input
+                    className="px-2 sm:px-5 py-1 sm:py-2 w-full text-black text-lg outline-0 placeholder-gray-400 placeholder:italic placeholder:text-sm"
+                    type="text"
+                    name="password"
+                    id="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                    placeholder="Your Password"
+                    autoComplete="false"
+                    required
+                  />
                 </div>
-              </Link>
-            </div>
-          </form>
-        </div>
-      </div>
+              </div>
 
-      <Footer />
-    </div>
+              <button
+                className="p-2 px-5 text-black rounded-lg text-lg hover:scale-105 duration-300"
+                style={{
+                  color: "#003366",
+                  fontWeight: "500",
+                  backgroundColor: "white",
+                }}
+                type="submit"
+                onClick={loginUser}
+              >
+                Login
+              </button>
+
+              <div className="flex space-x-2">
+                <div className="text-white">Don't have an account?</div>
+                <Link to="/register">
+                  <div className="text-yellow-200 cursor-pointer hover:text-[yellow]">
+                    Register now
+                  </div>
+                </Link>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+    </>
   );
 };
 

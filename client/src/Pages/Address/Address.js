@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Address() {
@@ -33,6 +33,10 @@ function Address() {
       navigate("/payment");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[])
 
   return (
     <div className="my-40 w-[350px] md:w-[650px] m-auto p-5 xl:p-10 bg-white rounded-xl shadow-xl">
@@ -95,12 +99,21 @@ function Address() {
             className="outline-0 w-full p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm resize-none rounded-none"
           />
         </div>
-        <button
-          type="submit"
-          className="mt-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md hover:text-white cursor-pointer"
-        >
-          Deliver Here
-        </button>
+        <div className='flex items-center justify-between'>
+          <div
+            className="mt-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md hover:text-white cursor-pointer"
+            onClick={() => { navigate('/'); window.location.reload(); }}
+          >
+            Cancel
+          </div>
+
+          <button
+            type="submit"
+            className="mt-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md hover:text-white cursor-pointer"
+          >
+            Deliver Here
+          </button>
+        </div>
       </form>
     </div>
   );

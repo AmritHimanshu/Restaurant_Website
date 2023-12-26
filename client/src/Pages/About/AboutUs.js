@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import Slider from './Slider'; 
-import Card from './Card'; 
+import Header from "../Header/Header";
+import Slider from './Slider';
+import Card from './Card';
 import Footer from '../Footer/Footer';
-import './AboutUs.css'; 
+import './AboutUs.css';
 
 const AboutUs = () => {
 
@@ -41,25 +42,28 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="about-us-container">
-      <Slider images={sliderImages} />
+    <>
+      <Header />
+      <div className="about-us-container">
+        <Slider images={sliderImages} />
 
-      <div className="about-us-content">
-        <h1>About Our Company</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis eaque quia placeat fugiat quos veritatis autem illum quas, enim magni. Maxime nam quo, error minus quos blanditiis similique accusantium illo nobis animi nihil nemo sunt accusamus quae inventore neque voluptas. Quae totam voluptates rem, accusantium necessitatibus unde quas blanditiis impedit!</p>
-      </div>
-      <div className='team'>
-        <h1>Our Team</h1>
-      </div>
+        <div className="about-us-content">
+          <h1>About Our Company</h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis eaque quia placeat fugiat quos veritatis autem illum quas, enim magni. Maxime nam quo, error minus quos blanditiis similique accusantium illo nobis animi nihil nemo sunt accusamus quae inventore neque voluptas. Quae totam voluptates rem, accusantium necessitatibus unde quas blanditiis impedit!</p>
+        </div>
+        <div className='team'>
+          <h1>Our Team</h1>
+        </div>
 
-      <div className="team-cards">
-        {teamMembers.map((member, index) => (
-          <Card key={index} name={member.name} designation={member.designation} image={member.image} />
-        ))}
-      </div>
+        <div className="team-cards">
+          {teamMembers.map((member, index) => (
+            <Card key={index} name={member.name} designation={member.designation} image={member.image} />
+          ))}
+        </div>
 
-      <Footer/>
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 };
 

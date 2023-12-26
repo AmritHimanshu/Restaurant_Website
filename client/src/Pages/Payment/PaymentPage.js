@@ -158,7 +158,7 @@ const PaymentPage = () => {
                 className="mt-5 p-5 xl:w-[445px] m-auto bg-blue text-center text-gray-200 font-bold rounded-md hover:text-white cursor-pointer"
                 onClick={() => {
                   navigate("/upi-transaction");
-                  window.location.reload();
+                  // window.location.reload();
                 }}
               >
                 VERIFY AND PAY

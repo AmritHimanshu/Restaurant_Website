@@ -50,12 +50,12 @@ function UpiTransaction() {
       >
         <div>
           <div className="flex items-center space-x-5">
-            <BsArrowLeft
+            {/* <BsArrowLeft
               style={{ fontSize: "30px", marginRight: "10px" }}
               title="back"
               className="cursor-pointer"
               onClick={() => setStatus(!status)}
-            />
+            /> */}
             <div className="text-sm xl:text-xl">PAYMENT DETAILS</div>
           </div>
 

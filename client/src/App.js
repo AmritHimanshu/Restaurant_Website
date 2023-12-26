@@ -57,7 +57,7 @@ function App() {
   return (
     <>
       <div className="">
-        <Header />
+        {/* <Header /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
