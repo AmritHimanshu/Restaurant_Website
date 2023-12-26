@@ -1,12 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../features/userSlice";
 import Footer from "../Footer/Footer";
 
 const Form = () => {
-
-  const dispatch = useDispatch();
 
   const [userData, setUserData] = useState({ name: '', email: '', phone: '', message: '' });
 
@@ -20,8 +16,6 @@ const Form = () => {
       });
 
       const data = await res.json();
-      dispatch(login(data));
-
       setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
 
       if (!res.status === 200) {
