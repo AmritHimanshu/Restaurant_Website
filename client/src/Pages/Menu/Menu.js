@@ -45,7 +45,7 @@ const Menu = () => {
     }, []);
 
 
-    const [mealType, setMealType] = useState();
+    const [mealType, setMealType] = useState("Noodles");
 
     const selectMealType = (ev) => {
         // set design
