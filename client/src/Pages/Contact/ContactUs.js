@@ -15,16 +15,17 @@ const Form = () => {
         },
       });
 
-      const data = await res.json();
-      setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
-
-      if (!res.status === 200) {
+      if (res.status !== 200) {
         const error = new Error(res.error);
         throw error;
       }
+      else {
+        const data = await res.json();
+        setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
+      }
 
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

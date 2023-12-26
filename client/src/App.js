@@ -36,16 +36,18 @@ function App() {
 
       if (res.status !== 200) {
         const error = new Error(res.error);
-        throw error;
+        // console.log(res)
+        // throw error;
       }
 
-      const data = await res.json();
-
-      dispatch(login(data));
+      else {
+        const data = await res.json();
+        dispatch(login(data));
+      }
 
       
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   }
 

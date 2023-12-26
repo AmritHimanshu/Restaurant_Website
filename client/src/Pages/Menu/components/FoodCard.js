@@ -1,9 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../features/userSlice';
 import '../Menu.css'
 
 const FoodCard = ({ id, title, price, image, func }) => {
 
+  const user = useSelector(selectUser);
+
   const handleOnClick = (e) => {
+
+    if (!user) {
+      window.alert("Login First");
+      return;
+    }
+
     // Update the item with the new data
     const updatedItem = {
       id: id,

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
 import FoodCard from "./components/FoodCard";
 import "../Menu/Menu.css";
 
 const Menu = () => {
+
+    const user = useSelector(selectUser);
 
     const [cartLength, setCartLength] = useState();
 
@@ -23,11 +27,10 @@ const Menu = () => {
             });
 
             const data = await res.json();
-            // console.log(data);
             setMenu(data);
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     }
 
@@ -87,7 +90,7 @@ const Menu = () => {
                 }
             </div>
 
-            {cartLength > 0 && <div className="px-2 lg:px-5 py-2 md:py-2 bg-blue flex flex-row md:flex-row items-center justify-between w-[350px] md:w-[600px] xl:w-[600px] rounded-md fixed bottom-1 left-[6%] md:left-[14%] lg:left-[22%] xl:left-[30%] 2xl:left-[34%] shadow-xl"
+            {user && cartLength > 0 && <div className="px-2 lg:px-5 py-2 md:py-2 bg-blue flex flex-row md:flex-row items-center justify-between w-[350px] md:w-[600px] xl:w-[600px] rounded-md fixed bottom-1 left-[6%] md:left-[14%] lg:left-[22%] xl:left-[30%] 2xl:left-[34%] shadow-xl"
             >
                 <div className="text-[16px] text-white text-center">
                     {cartLength} items added
