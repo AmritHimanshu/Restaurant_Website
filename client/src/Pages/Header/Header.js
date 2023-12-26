@@ -120,7 +120,7 @@ function NavBar() {
                 className="header-icon"
                 onClick={handleClickAvatar}
               >
-                {user ? <div className="px-3 py-1 bg-indigo-300 text-blue hover:bg-indigo-100 duration-300 rounded-full" title="Log Out">{user.name[0]}</div> : <div className="nav-item bg-indigo-300 hover:bg-indigo-100 duration-300 text-blue text-lg px-2 rounded-lg">Log In</div>}
+                {user ? <div className="px-3 py-1 bg-white text-blue hover:bg-indigo-500 hover:text-white duration-300 rounded-full" title="Log Out">{user.name[0]}</div> : <div className="nav-item bg-indigo-300 hover:bg-indigo-100 duration-300 text-blue text-lg px-2 rounded-lg">Log In</div>}
               </NavLink>
             </li>
           </ul>
