@@ -29,7 +29,7 @@ function Address() {
       alert(`${data.error}`);
     }
     else {
-      // alert(`${data}`);
+      // alert(`${data.message}`);
       navigate("/payment");
     }
   };

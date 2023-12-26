@@ -100,8 +100,14 @@ router.post('/address', authenticate, async (req, res) => {
     const address = 'H no. ' + houseNumber + ', ' + apartment + ', ' + landmark + ', ' + 'pincode - ' + pincode + ', ' + 'Direction : ' + directions;
 
     try {
-        const userAddress = await req.rootUser.addAddress(address);
-        res.status(200).json({ message: "Done" });
+        const addressExists = req.rootUser.addresses.some(data => data.address === address);
+        if (addressExists) {
+            return res.status(200).json({ message: "Address is present" });
+        }
+        else {
+            const userAddress = await req.rootUser.addAddress(address);
+            res.status(200).json({ message: "Done" });
+        }
     } catch (error) {
         console.log(error);
     }
