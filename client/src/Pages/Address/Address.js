@@ -30,7 +30,7 @@ function Address() {
     }
     else {
       // alert(`${data.message}`);
-      navigate("/payment");
+      navigate("/cart/checkout/delivery-address/payment");
     }
   };
 

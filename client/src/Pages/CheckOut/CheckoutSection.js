@@ -77,7 +77,7 @@ const CheckoutSection = () => {
             Will Do It Later
           </button>
         </Link>
-        <Link to="/delivery-address">
+        <Link to="/cart/checkout/delivery-address">
           <button className="py-[10px] px-[20px] bg-blue text-white cursor-pointer text-[10px] xl:text-[15px] font-[600] rounded-md duration-200 hover:bg-white hover:text-blue">
             Proceed to Pay
           </button>
