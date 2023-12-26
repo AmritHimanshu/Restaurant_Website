@@ -15,8 +15,12 @@ import UpiTransaction from "./Pages/Payment/UpiTransaction";
 import CardsTransaction from "./Pages/Payment/CardsTransaction";
 import OrderTrack from "./Pages/OrderTrack/OrderTrack";
 import "./App.css";
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/userSlice";
 
 function App() {
+
+  const user = useSelector(selectUser);
 
   return (
     <>
@@ -31,12 +35,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/delivery-address" element={<Address />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/upi-transaction" element={<UpiTransaction />} />
-          <Route path="/cards-transaction" element={<CardsTransaction />} />
-          <Route path="/order-track" element={<OrderTrack />} />
+          {user && <Route path="/checkout" element={<Checkout />} />}
+          {user && <Route path="/delivery-address" element={<Address />} />}
+          {user && <Route path="/payment" element={<Payment />} />}
+          {user && <Route path="/upi-transaction" element={<UpiTransaction />} />}
+          {user && <Route path="/cards-transaction" element={<CardsTransaction />} />}
+          {user && <Route path="/order-track" element={<OrderTrack />} />}
         </Routes>
       </div>
     </>
