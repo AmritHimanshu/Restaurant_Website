@@ -7,31 +7,27 @@ const CartPage = () => {
 
   const [addItem, setAddItem] = useState();
 
-  useEffect(() => {
+  const [grandTotal, setGrandTotal] = useState();
 
+  useEffect(() => {
     window.scrollTo(0, 0);
 
     const items = JSON.parse(localStorage.getItem('items'));
-
     if (items && items.length > 0) {
       setAddItem(items);
     }
     else localStorage.clear();
   }, []);
 
-  const [grandTotal, setGrandTotal] = useState();
 
   useEffect(() => {
     let total = 0;
-
     {
       addItem && addItem.forEach((item) => {
         total += item.price * item.quantity;
       });
     }
-
     setGrandTotal(total);
-
   }, [addItem])
 
 
