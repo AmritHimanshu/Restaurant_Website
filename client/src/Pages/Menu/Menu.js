@@ -45,7 +45,7 @@ const Menu = () => {
     }, []);
 
 
-    const [mealType, setMealType] = useState("Soup");
+    const [mealType, setMealType] = useState();
 
     const selectMealType = (ev) => {
         // set design
@@ -68,7 +68,7 @@ const Menu = () => {
                 <div className="mealSelect">
 
                     {menu?.map((data, index) => (
-                        <button key={index} value={data.category} className={`mealButton `} onClick={selectMealType} >{data.category}</button>
+                        <button key={index} value={data.category} className={`mealButton`} onClick={selectMealType} >{data.category}</button>
                     ))}
 
                     {/* <button value="Soup" className="mealButton mealActive" onClick={selectMealType} >Soup</button> */}
