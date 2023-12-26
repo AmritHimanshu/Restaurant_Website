@@ -34,16 +34,16 @@ function App() {
         },
       });
 
-      const data = await res.json();
-
-      dispatch(login(data));
-
-
-      if (!res.status === 200) {
+      if (res.status !== 200) {
         const error = new Error(res.error);
         throw error;
       }
 
+      const data = await res.json();
+
+      dispatch(login(data));
+
+      
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +66,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           {user && <Route path="/cart" element={<CartPage />} />}
-          {user && <Route path="/checkout" element={<Checkout />} />}
+          {<Route path="/checkout" element={<Checkout />} />}
           {user && <Route path="/delivery-address" element={<Address />} />}
           {user && <Route path="/payment" element={<Payment />} />}
           {user && <Route path="/upi-transaction" element={<UpiTransaction />} />}

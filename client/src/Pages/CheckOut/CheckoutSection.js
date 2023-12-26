@@ -1,13 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../features/userSlice";
+import { useDispatch } from "react-redux";
 
 const CheckoutSection = () => {
 
   const [addItem, setAddItem] = useState();
+  
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const getData = async () => {
+    try {
+      const res = await fetch('/getData', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.status === 200) {
+        const error = new Error(res.error);
+        throw error;
+      }
+      dispatch(login(data));
+      
+    } catch (error) {
+      navigate('/');
+    }
+  }
 
   useEffect(() => {
 
     window.scrollTo(0, 0);
+
+    getData();
 
     const items = JSON.parse(localStorage.getItem('items'));
 
