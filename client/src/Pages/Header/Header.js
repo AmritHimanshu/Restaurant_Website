@@ -78,13 +78,13 @@ function NavBar() {
             </li>
 
             <li className="header-icon-li flex items-center">
-              <NavLink
+              {user && <NavLink
                 to="/cart"
                 className="header-icon"
                 onClick={handleClick}
               >
                 <FaCartPlus />
-              </NavLink>
+              </NavLink>}
 
               <NavLink
                 to="/login"
