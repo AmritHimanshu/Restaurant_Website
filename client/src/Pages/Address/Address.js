@@ -32,8 +32,6 @@ function Address() {
       // alert(`${data}`);
       navigate("/payment");
     }
-
-    navigate("/payment");
   };
 
   return (
