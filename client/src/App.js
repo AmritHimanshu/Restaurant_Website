@@ -67,13 +67,14 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {user && <Route path="/cart" element={<CartPage />} />}
-          {<Route path="/checkout" element={<Checkout />} />}
+          {user &&<Route path="/cart" element={<CartPage />} />}
+          {user && <Route path="/checkout" element={<Checkout />} />}
           {user && <Route path="/delivery-address" element={<Address />} />}
           {user && <Route path="/payment" element={<Payment />} />}
           {user && <Route path="/upi-transaction" element={<UpiTransaction />} />}
           {user && <Route path="/cards-transaction" element={<CardsTransaction />} />}
           {user && <Route path="/order-track" element={<OrderTrack />} />}
+          <Route path="*" element={<Home/>} />
         </Routes>
       </div>
     </>
