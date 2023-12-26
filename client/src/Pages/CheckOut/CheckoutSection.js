@@ -72,14 +72,14 @@ const CheckoutSection = () => {
         </p>
       </div>
       {grandTotal > 0 && <div className="flex flex-col md:flex-row justify-between items-center my-[60px] space-y-5 md:space-y-0 md:w-[650px] m-auto md:space-x-10">
-        <Link to="/delivery-address">
-          <button className="py-[10px] px-[20px] bg-blue text-white cursor-pointer text-[10px] xl:text-[15px] font-[600] rounded-md duration-200 hover:bg-white hover:text-blue">
-            Proceed to Pay
-          </button>
-        </Link>
         <Link to="/">
           <button className="py-[10px] px-[20px] bg-blue text-white cursor-pointer text-[10px] xl:text-[15px] font-[600] rounded-md duration-200 hover:bg-white hover:text-blue">
             Will Do It Later
+          </button>
+        </Link>
+        <Link to="/delivery-address">
+          <button className="py-[10px] px-[20px] bg-blue text-white cursor-pointer text-[10px] xl:text-[15px] font-[600] rounded-md duration-200 hover:bg-white hover:text-blue">
+            Proceed to Pay
           </button>
         </Link>
       </div>}
