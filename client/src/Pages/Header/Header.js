@@ -101,7 +101,9 @@ function NavBar() {
                 className="header-icon"
                 onClick={handleClickAvatar}
               >
-                {user ? <div className="px-2 bg-gray-400 rounded-full" title="Log Out">{user.name[0]}</div> : <BiSolidUserCircle title="Log In" />}
+                {/* {user ? <div className="px-2 bg-gray-400 rounded-full" title="Log Out">{user.name[0]}</div> : <BiSolidUserCircle title="Log In" />} */}
+
+                {user ? <div className="px-3 py-1 ml-5 bg-indigo-300 text-blue rounded-full" title="Log Out">{user.name[0]}</div> : <div className="nav-item bg-indigo-300 text-blue text-lg px-2 ml-5 rounded-lg">Log In</div>}
               </NavLink>
             </li>
           </ul>
