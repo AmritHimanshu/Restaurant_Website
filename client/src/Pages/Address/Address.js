@@ -11,8 +11,8 @@ function Address() {
   const [directions, setDirections] = useState('');
 
   const navigate = useNavigate();
+
   const user = useSelector(selectUser);
-  console.log(user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +43,7 @@ function Address() {
   },[])
 
   return (
-    <div className="my-40 w-[350px] md:w-[650px] m-auto p-5 xl:p-10 bg-white rounded-xl shadow-xl">
+    <div className="my-24 w-[350px] md:w-[650px] m-auto p-5 xl:p-10 bg-white rounded-xl shadow-xl">
       <h2 className="text-blue font-bold text-2xl pb-5">
         Delivery Address
       </h2>
@@ -115,15 +115,15 @@ function Address() {
         </div>
         <div className='flex items-center justify-between'>
           <div
-            className="mt-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md hover:text-white cursor-pointer"
-            onClick={() => { navigate('/'); window.location.reload(); }}
+            className="mt-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer"
+            onClick={() => { navigate('/delivery-address'); }}
           >
             Cancel
           </div>
 
           <button
             type="submit"
-            className="mt-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md hover:text-white cursor-pointer"
+            className="mt-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer"
           >
             Deliver Here
           </button>

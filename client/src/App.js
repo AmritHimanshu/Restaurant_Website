@@ -18,6 +18,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "./features/userSlice";
 import { useEffect } from "react";
+import SelectAddress from "./Pages/Address/SelectAddress";
 
 function App() {
 
@@ -68,7 +69,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           {user &&<Route path={`${user._id}/cart`} element={<CartPage />} />}
           {user && <Route path={`${user._id}/cart/checkout`} element={<Checkout />} />}
-          {user && <Route path="/delivery-address" element={<Address />} />}
+          {user && <Route path="/delivery-address" element={<SelectAddress />} />}
+          {user && <Route path="/add-delivery-address" element={<Address />} />}
           {user && <Route path="/payment" element={<Payment />} />}
           {user && <Route path="/upi-transaction" element={<UpiTransaction />} />}
           {user && <Route path="/cards-transaction" element={<CardsTransaction />} />}
