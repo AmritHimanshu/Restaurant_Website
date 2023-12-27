@@ -9,6 +9,16 @@ function SelectAddress() {
 
   const navigate = useNavigate();
 
+  const handleOnNext = () => {
+    var selectedAddress;
+    var listAddress = document.getElementsByName('address');
+    for (var i = 0; i < listAddress.length; i++){
+      if (listAddress[i].checked) {
+        selectedAddress = listAddress[i].value;
+      }
+    }
+  }
+
   return (
     <div className='h-[100vh] flex flex-col items-center justify-center'>
       <div className='my-2 p-5 pb-2 w-[650px] text-[25px] text-blue border-b-[3px] font-bold'>
@@ -30,7 +40,7 @@ function SelectAddress() {
           Cancel
         </div>
 
-        <div className="mt-5 py-3 px-6 bg-blue text-center text-white font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer">
+        <div className="mt-5 py-3 px-6 bg-blue text-center text-white font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer" onClick={handleOnNext}>
           Next
         </div>
       </div>
