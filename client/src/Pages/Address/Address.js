@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { selectUser } from '../../features/userSlice';
 
 function Address() {
   const [houseNumber, setHouseNumber] = useState('');
@@ -9,6 +11,8 @@ function Address() {
   const [directions, setDirections] = useState('');
 
   const navigate = useNavigate();
+  const user = useSelector(selectUser);
+  console.log(user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,11 +49,13 @@ function Address() {
       </h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-[15px] space-y-2">
-          <label className="text-lg text-gray-600">
+          <label htmlFor="houserNumber" className="text-lg text-gray-600">
             House/Flat/Block No. <span className="text-[red]">*</span>
           </label>
           <input
             type="text"
+            id="houserNumber"
+            name="houserNumber"
             value={houseNumber}
             onChange={(e) => setHouseNumber(e.target.value)}
             required
@@ -57,11 +63,13 @@ function Address() {
           />
         </div>
         <div className="mb-[15px] space-y-2">
-          <label className="text-lg text-gray-600">
+          <label htmlFor="apartment" className="text-lg text-gray-600">
             Apartment/Road/Area <span className="text-[red]">*</span>
           </label>
           <input
             type="text"
+            id="apartment"
+            name="apartment"
             value={apartment}
             onChange={(e) => setApartment(e.target.value)}
             required
@@ -69,11 +77,13 @@ function Address() {
           />
         </div>
         <div className="mb-[15px] space-y-2">
-          <label className="text-lg text-gray-600">
+          <label htmlFor="pincode" className="text-lg text-gray-600">
             Pincode <span className="text-[red]">*</span>
           </label>
           <input
             type="text"
+            id="pincode"
+            name="pincode"
             value={pincode}
             onChange={(e) => setPincode(e.target.value)}
             
@@ -81,19 +91,23 @@ function Address() {
           />
         </div>
         <div className="mb-[15px] space-y-2">
-          <label className="text-lg text-gray-600">Lankmark (optional)</label>
+          <label htmlFor="landmark" className="text-lg text-gray-600">Lankmark (optional)</label>
           <input
             type="text"
+            id="landmark"
+            name="landmark"
             value={landmark}
             onChange={(e) => setLandmark(e.target.value)}
             className="outline-0 p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm"
           />
         </div>
         <div className="mb-[15px] space-y-2">
-          <label className="text-lg text-gray-600">
+          <label htmlFor="directions" className="text-lg text-gray-600">
             Directions to Reach (optional)
           </label>
           <textarea
+            id="directions"
+            name="directions"
             value={directions}
             onChange={(e) => setDirections(e.target.value)}
             className="outline-0 w-full p-2 text-lg w-full border-2 border-gray-600 placeholder:text-sm resize-none rounded-none"
