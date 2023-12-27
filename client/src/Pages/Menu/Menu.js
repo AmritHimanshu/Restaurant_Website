@@ -98,7 +98,7 @@ const Menu = () => {
                     <div className="text-[16px] text-white text-center">
                         {cartLength} items added
                     </div>
-                    <Link to='/cart'>
+                    <Link to={`/${user._id}/cart`}>
                         <div className="text-[15px] xl:text-[18px] text-white p-2 cursor-pointer hover:scale-105 hover:font-bold duration-300">View Cart</div></Link>
                 </div>}
 
