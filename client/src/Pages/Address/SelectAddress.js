@@ -22,15 +22,15 @@ function SelectAddress() {
             <label htmlFor={data._id} className='p-7 text-[16px] font-bold'>{data.address}</label>
           </div>
         ))}
-        <div className="my-5 p-3 bg-blue text-center text-gray-200 font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer" onClick={() => navigate("/add-delivery-address")}>Add New Address</div>
+        <div className="my-5 p-3 bg-white text-center text-blue font-bold rounded-md duration-200 hover:bg-blue hover:text-white cursor-pointer" onClick={() => navigate("/add-delivery-address")}>Add New Address</div>
       </div>
 
       <div className='w-[650px] flex justify-between'>
-        <div className="mt-5 py-3 px-6 bg-blue text-center text-gray-200 font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer" onClick={() => navigate("/")}>
+        <div className="mt-5 py-3 px-6 bg-blue text-center text-white font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer" onClick={() => navigate("/")}>
           Cancel
         </div>
 
-        <div className="mt-5 py-3 px-6 bg-blue text-center text-gray-200 font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer">
+        <div className="mt-5 py-3 px-6 bg-blue text-center text-white font-bold rounded-md duration-200 hover:bg-white hover:text-blue cursor-pointer">
           Next
         </div>
       </div>
