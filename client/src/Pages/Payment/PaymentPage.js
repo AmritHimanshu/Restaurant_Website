@@ -137,6 +137,7 @@ const PaymentPage = () => {
               <div className="border-2 border-gray-400 p-5">
                 <input
                   type="text"
+                  id="vpa"
                   className="outline-0 w-[250px] md:w-[290px] xl:w-[460px] text-lg placeholder:text-sm"
                   placeholder="Enter VPA"
                 />
@@ -215,6 +216,7 @@ const PaymentPage = () => {
                 <div className="border-2 border-b-0 border-gray-400 max-w-min p-5">
                   <input
                     type="text"
+                    id="card number"
                     className="outline-0 text-lg w-[250px] md:w-[290px] xl:w-[460px] placeholder:text-sm"
                     placeholder="Card number"
                   />
@@ -223,6 +225,7 @@ const PaymentPage = () => {
                   <div className="border-2 border-b-0 border-gray-400 max-w-min p-5">
                     <input
                       type="text"
+                      id="validity"
                       className="outline-0 text-lg w-[250px] md:w-[290px] xl:w-[250px] placeholder:text-sm"
                       placeholder="Valid through (MM/YY)"
                     />
@@ -230,6 +233,7 @@ const PaymentPage = () => {
                   <div className="border-2 border-b-0 xl:border-l-0 border-gray-400 max-w-min p-5">
                     <input
                       type="text"
+                      id="cvv"
                       className="outline-0 text-lg w-[250px] md:w-[290px] xl:w-[168px] placeholder:text-sm"
                       placeholder="CVV"
                     />
@@ -238,6 +242,7 @@ const PaymentPage = () => {
                 <div className="border-2 border-gray-400 max-w-min p-5">
                   <input
                     type="text"
+                    id="name on card"
                     className="outline-0 text-lg w-[250px] md:w-[290px] xl:w-[460px] placeholder:text-sm"
                     placeholder="Name on card"
                   />
