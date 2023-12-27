@@ -34,6 +34,12 @@ function Address() {
     }
     else {
       // alert(`${data.message}`);
+      const addAddress = houseNumber + ', ' + apartment + ', ' + landmark + ', ' + 'pincode - ' + pincode + ', ' + 'Direction : ' + directions;
+
+      let address = localStorage.getItem('address');
+      address = addAddress;
+      localStorage.setItem('address', JSON.stringify(address));
+
       navigate("/payment");
     }
   };

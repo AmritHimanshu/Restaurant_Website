@@ -17,6 +17,9 @@ function SelectAddress() {
         selectedAddress = listAddress[i].value;
       }
     }
+    let address = localStorage.getItem('address');
+    address = selectedAddress;
+    localStorage.setItem('address',JSON.stringify(address));
   }
 
   return (
