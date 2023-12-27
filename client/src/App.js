@@ -66,8 +66,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {user &&<Route path={`/cart`} element={<CartPage />} />}
-          {user && <Route path={`/checkout`} element={<Checkout />} />}
+          {user &&<Route path={`${user._id}/cart`} element={<CartPage />} />}
+          {user && <Route path={`${user._id}/cart/checkout`} element={<Checkout />} />}
           {user && <Route path="/delivery-address" element={<Address />} />}
           {user && <Route path="/payment" element={<Payment />} />}
           {user && <Route path="/upi-transaction" element={<UpiTransaction />} />}

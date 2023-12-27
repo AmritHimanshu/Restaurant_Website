@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/userSlice";
 
 const CartPage = () => {
+
+  const user = useSelector(selectUser);
 
   const navigate = useNavigate();
 
@@ -108,7 +112,7 @@ const CartPage = () => {
             </p>
 
             <button className="py-2 xl:py-[10px] px-[20px] bg-blue text-white cursor-pointer text-[15px] font-[600] rounded-md duration-200 hover:bg-white hover:text-blue" onClick={() => {
-              navigate("/checkout");
+              navigate(`/${user._id}/cart/checkout`);
             }}>
               Checkout
             </button>

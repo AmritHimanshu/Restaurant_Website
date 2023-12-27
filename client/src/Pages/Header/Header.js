@@ -79,7 +79,7 @@ function NavBar() {
 
             <li className="ml-5 w-[150px] flex items-center justify-between">
               {user && <NavLink
-                to="/cart"
+                to={`/${user._id}/cart`}
                 className="header-icon nav-links hover:text-[30px] duration-300 text-white"
                 title="my cart"
                 onClick={handleClick}
