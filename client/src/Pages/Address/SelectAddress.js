@@ -19,7 +19,12 @@ function SelectAddress() {
     }
     let address = localStorage.getItem('address');
     address = selectedAddress;
-    localStorage.setItem('address',JSON.stringify(address));
+    localStorage.setItem('address', JSON.stringify(address));
+    
+    if (selectedAddress) {
+      navigate('/payment')
+    }
+    else window.alert('Select address to deliver');
   }
 
   return (
