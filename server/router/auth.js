@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const authenticate = require('../middleware/authenticate');
+const cors = require('cors');
 
-require('../db/conn');
+// require('../db/conn');
 
 const User = require('../model/userSchema');
 const Menu = require('../model/menuSchema');
@@ -118,7 +119,7 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: "I am from backend" });
 })
 
-router.get('/getData', authenticate, (req, res) => {
+router.get('/getData', cors({ origin: 'https://demo-restaurant-six.vercel.app', credentials: true }), authenticate, (req, res) => {
     res.status(200).send(req.rootUser);
 });
 
