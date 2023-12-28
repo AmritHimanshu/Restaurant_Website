@@ -76,7 +76,6 @@ const Login = () => {
       dispatch(login(
         data
       ));
-      console.log(res.status);
       navigate('/');
       // window.location.reload();
     }
