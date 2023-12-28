@@ -124,6 +124,7 @@ router.get('/getData', authenticate, (req, res) => {
 
 router.get('/getMenu', async (req, res) => {
     try {
+        console.log("sdfjhkjshdf")
         const menu = await Menu.find();
         res.status(200).send(menu);
     } catch (error) {
