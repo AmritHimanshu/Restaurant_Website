@@ -36,6 +36,7 @@ const CartPage = () => {
 
 
   const handleQuantityChange = (id, action) => {
+    let flag = true;
     const updatedItems = addItem.map((item, index) => {
       if (item.id === id) {
         const updatedQuantity = action === 'increment' ? item.quantity + 1 : item.quantity - 1;
@@ -44,14 +45,18 @@ const CartPage = () => {
           let itemObj = JSON.parse(items);
           itemObj.splice(index, 1);
           localStorage.setItem('items', JSON.stringify(itemObj));
+          flag = false;
+          window.location.reload();
         }
         return { ...item, quantity: Math.max(updatedQuantity, 0) };
       }
       return item;
     });
 
-    setAddItem(updatedItems);
-    localStorage.setItem('items', JSON.stringify(updatedItems));
+    if (flag) {
+      setAddItem(updatedItems);
+      localStorage.setItem('items', JSON.stringify(updatedItems));
+    }
   };
 
   const deleteAllItems = () => {
