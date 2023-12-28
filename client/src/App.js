@@ -40,17 +40,19 @@ function App() {
 
       if (res.status !== 200) {
         const error = new Error(res.error);
+        console.log("2");
         // throw error;
       }
 
       else {
-        const data = await res.json();
         console.log(res.status);
+        const data = await res.json();
         dispatch(login(data));
       }
 
       
     } catch (error) {
+      console.log("4")
       // console.log(error);
     }
   }
