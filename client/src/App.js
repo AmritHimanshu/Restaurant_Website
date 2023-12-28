@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "./features/userSlice";
 import Home from "./Pages/Home/Home";
 import Menu from "./Pages/Menu/Menu";
 import Gallery from "./Pages/Gallery/Gallery";
@@ -9,22 +12,21 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/Login/Register";
 import CartPage from "./Pages/Cart/CartPage";
 import Checkout from "./Pages/CheckOut/CheckoutSection";
+import SelectAddress from "./Pages/Address/SelectAddress";
 import Address from "./Pages/Address/Address";
 import Payment from "./Pages/Payment/PaymentPage";
 import UpiTransaction from "./Pages/Payment/UpiTransaction";
 import CardsTransaction from "./Pages/Payment/CardsTransaction";
 import OrderTrack from "./Pages/OrderTrack/OrderTrack";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
-import { login, selectUser } from "./features/userSlice";
-import { useEffect } from "react";
-import SelectAddress from "./Pages/Address/SelectAddress";
 
 function App() {
 
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
+
+  const [cartItem, setCartItem] = useState(false);
 
   const getData = async () => {
     try {
@@ -53,6 +55,10 @@ function App() {
 
   useEffect(() => {
     getData();
+
+    const items = localStorage.getItem('items');
+    if (items) setCartItem(true);
+    else setCartItem(false);
   },[])
 
   return (
@@ -67,8 +73,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {user &&<Route path={`${user._id}/cart`} element={<CartPage />} />}
-          {user && <Route path={`${user._id}/cart/checkout`} element={<Checkout />} />}
+          {user &&<Route path={`/cart`} element={<CartPage />} />}
+          {user && cartItem && <Route path={`/checkout`} element={<Checkout />} />}
           {user && <Route path="/delivery-address" element={<SelectAddress />} />}
           {user && <Route path="/add-delivery-address" element={<Address />} />}
           {user && <Route path="/payment" element={<Payment />} />}
