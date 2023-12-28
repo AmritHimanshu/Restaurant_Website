@@ -120,7 +120,7 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: "I am from backend" });
 })
 
-router.get('/getData', cors({ origin: 'https://demo-restaurant-six.vercel.app', credentials: true }), authenticate, (req, res) => {
+router.get('/getData', authenticate, (req, res) => {
     res.status(200).send(req.rootUser);
 });
 
