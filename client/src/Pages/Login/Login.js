@@ -11,7 +11,7 @@ const Login = () => {
 
   const callLogOut = async () => {
     try {
-      const res = await fetch('/logout', {
+      const res = await fetch('https://demo-restaurant-omega.vercel.app/logout', {
         method: 'GET',
         headers: {
           Accept: 'application/json', // For cookies
