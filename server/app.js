@@ -10,7 +10,7 @@ const PORT = process.env.PORT;
 
 require('./db/conn');
 
-// app.use(cors({ origin: true }));
+app.use(cors({ origin: true }));
 
 app.use(express.json());
 
