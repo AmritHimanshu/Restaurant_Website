@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../features/userSlice';
 import '../Menu.css'
@@ -6,6 +6,8 @@ import '../Menu.css'
 const FoodCard = ({ id, title, price, image, func }) => {
 
   const user = useSelector(selectUser);
+
+  const [text, setText] = useState("Add");
 
   const handleOnClick = (e) => {
 
@@ -31,14 +33,23 @@ const FoodCard = ({ id, title, price, image, func }) => {
       if (items == null) itemsObj = [];
       else itemsObj = JSON.parse(items);
       // Push the updated item to the items list
-      if (itemsObj.find(element => element.id === id) === undefined) {
+      if (itemsObj.find(element => element.title === title) === undefined) {
         itemsObj.push(updatedItem);
         localStorage.setItem('items', JSON.stringify(itemsObj));
+        setText("Added");
       }
       func(itemsObj.length);
     }, 0);
 
   }
+
+  useEffect(() => {
+    let items = localStorage.getItem('items');
+    let itemObj = JSON.parse(items);
+    if (itemObj.find(element => element.title === title) !== undefined) {
+      setText("Added");
+    }
+  },[])
 
   return (
     <div className="">
@@ -57,10 +68,11 @@ const FoodCard = ({ id, title, price, image, func }) => {
         <div className='relative'>
           <img src={image} alt="" className="w-[50px] h-[40px] lg:w-[110px] lg:h-[100px] rounded-xl" />
           <button
-            className="bg-white text-blue text-[12px] py-[1px] px-3 lg:py-[5px] lg:px-[35px] cursor-pointer m-[5px] border-[1px] border-gray-300 rounded-md hover:scale-105 duration-300 absolute bottom-0 -left-[5px] lg:left-1 lg:-bottom-3"
+            className="bg-white text-blue text-[12px] py-[1px] px-3 lg:py-[5px] cursor-pointer my-[5px] border-[1px] border-gray-300 rounded-md hover:scale-105 duration-300 absolute bottom-0 w-[100px] -left-[5px] lg:left-1 lg:-bottom-3"
             onClick={handleOnClick}
           >
-            Add
+            {text}
+            {/* Add */}
           </button>
         </div>
       </div>

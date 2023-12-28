@@ -24,6 +24,7 @@ const CartPage = () => {
     else localStorage.clear();
   }, []);
 
+  // console.log(addItem)
 
   useEffect(() => {
     let total = 0;
