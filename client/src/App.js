@@ -23,7 +23,6 @@ import "./App.css";
 function App() {
 
   const user = useSelector(selectUser);
-  console.log("1" + user);
 
   const dispatch = useDispatch();
 
@@ -31,7 +30,7 @@ function App() {
 
   const getData = async () => {
     try {
-      const res = await fetch('/getData', {
+      const res = await fetch('https://demo-restaurant-omega.vercel.app/getData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -40,19 +39,16 @@ function App() {
 
       if (res.status !== 200) {
         const error = new Error(res.error);
-        console.log("2");
         // throw error;
       }
 
       else {
-        console.log(res.status);
         const data = await res.json();
         dispatch(login(data));
       }
 
       
     } catch (error) {
-      console.log("4")
       // console.log(error);
     }
   }
