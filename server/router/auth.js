@@ -59,6 +59,7 @@ router.post('/signin', async (req, res) => {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
                 secure: true,  // Mark as secure if using HTTPS
+                sameSite: 'None',  // Set SameSite attribute for cross-origin requests
             });
 
             if (isMatch) {
