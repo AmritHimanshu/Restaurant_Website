@@ -73,9 +73,11 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {user &&<Route path={`/cart`} element={<CartPage />} />}
+          {user && <Route path={`/cart`} element={<CartPage />} />}
+          {user && !cartItem && <Route path={`/checkout`} element={<CartPage />} />}
           {user && cartItem && <Route path={`/checkout`} element={<Checkout />} />}
-          {user && <Route path="/delivery-address" element={<SelectAddress />} />}
+          {user && !cartItem && <Route path="/delivery-address" element={<CartPage />} />}
+          {user && cartItem && <Route path="/delivery-address" element={<SelectAddress />} />}
           {user && <Route path="/add-delivery-address" element={<Address />} />}
           {user && <Route path="/payment" element={<Payment />} />}
           {user && <Route path="/upi-transaction" element={<UpiTransaction />} />}
