@@ -118,6 +118,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/getData', authenticate, (req, res) => {
+    console.log("GEt")
     res.status(200).send(req.rootUser);
 });
 
