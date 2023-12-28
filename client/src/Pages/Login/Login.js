@@ -54,7 +54,7 @@ const Login = () => {
 
     if (!email || !password) return window.alert("Fill all the fields");
 
-    const res = await fetch('/signin', {
+    const res = await fetch('https://demo-restaurant-omega.vercel.app/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
