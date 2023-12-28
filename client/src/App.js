@@ -30,7 +30,7 @@ function App() {
 
   const getData = async () => {
     try {
-      const res = await fetch('/getData', {
+      const res = await fetch('https://demo-restaurant-omega.vercel.app/getData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
