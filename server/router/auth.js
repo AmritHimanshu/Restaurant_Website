@@ -113,6 +113,10 @@ router.post('/address', authenticate, async (req, res) => {
     }
 })
 
+router.get('/', (req, res) => {
+    res.status(200).json({ message: "I am from backend" });
+})
+
 router.get('/getData', authenticate, (req, res) => {
     res.status(200).send(req.rootUser);
 });
