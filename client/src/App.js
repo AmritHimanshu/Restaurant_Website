@@ -30,7 +30,7 @@ function App() {
 
   const getData = async () => {
     try {
-      const res = await fetch('https://demo-restaurant-omega.vercel.app/getData', {
+      const res = await fetch('/getData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -39,20 +39,15 @@ function App() {
 
       if (res.status !== 200) {
         const error = new Error(res.error);
-        console.log("1")
         // throw error;
       }
       
       else {
-        console.log("2")
         const data = await res.json();
         dispatch(login(data));
       }
       
-      console.log("3")
-      
     } catch (error) {
-      console.log("4")
       // console.log(error);
     }
   }

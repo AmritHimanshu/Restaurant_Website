@@ -9,7 +9,7 @@ const Form = () => {
 
   const getData = async () => {
     try {
-      const res = await fetch('/getData', {
+      const res = await fetch('https://demo-restaurant-omega.vercel.app/getData', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -22,6 +22,7 @@ const Form = () => {
       }
       else {
         const data = await res.json();
+        console.log("data = " + data);
         setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
       }
 
