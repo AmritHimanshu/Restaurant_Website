@@ -14,6 +14,7 @@ const Form = () => {
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
       });
 
       if (res.status !== 200) {
