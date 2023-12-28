@@ -35,6 +35,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
+        credentials: 'include',
       });
 
       if (res.status !== 200) {
