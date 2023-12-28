@@ -2,10 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const authenticate = require('../middleware/authenticate');
-const cors = require('cors');
 
 require('../db/conn');
-router.use(cors({ origin: true }));
 
 const User = require('../model/userSchema');
 const Menu = require('../model/menuSchema');
