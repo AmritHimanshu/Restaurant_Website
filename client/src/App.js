@@ -23,6 +23,7 @@ import "./App.css";
 function App() {
 
   const user = useSelector(selectUser);
+  console.log("1" + user);
 
   const dispatch = useDispatch();
 
@@ -44,6 +45,7 @@ function App() {
 
       else {
         const data = await res.json();
+        console.log(res.status);
         dispatch(login(data));
       }
 
