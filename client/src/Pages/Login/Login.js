@@ -77,7 +77,7 @@ const Login = () => {
         data
       ));
       navigate('/');
-      // window.location.reload();
+      window.location.reload();
     }
   };
 
