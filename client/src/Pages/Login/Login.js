@@ -73,9 +73,6 @@ const Login = () => {
     else if (res.status === 422) window.alert(`${data.error}`);
     else {
       window.alert("Signin successfully");
-      dispatch(login(
-        data
-      ));
       navigate('/');
       window.location.reload();
     }
