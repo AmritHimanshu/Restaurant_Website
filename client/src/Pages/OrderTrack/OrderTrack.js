@@ -65,7 +65,7 @@ function OrderTrack() {
               <div className="xl:w-[49%] space-y-6">
                 <div className="space-y-1">
                   <div className="text-gray-500">FROM</div>
-                  <div className="font-bold">JAY BHARAT RESTAURANT</div>
+                  <div className="font-bold">dEMO RESTAURANT</div>
                   <div className="text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Aliquam, quibusdam!

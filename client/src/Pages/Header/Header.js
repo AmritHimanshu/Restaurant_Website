@@ -30,7 +30,7 @@ function NavBar() {
       <nav className="navbar">
         <div className="nav-container">
           <Link to="/" className="nav-logo">
-            <span className="r">Jay Bharat Restaurant</span>
+            <span className="r">dEMO Restaurant</span>
           </Link>
 
           <ul
