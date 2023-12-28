@@ -46,7 +46,7 @@ const FoodCard = ({ id, title, price, image, func }) => {
   useEffect(() => {
     let items = localStorage.getItem('items');
     let itemObj = JSON.parse(items);
-    if (itemObj.find(element => element.title === title) !== undefined) {
+    if (itemObj?.find(element => element.title === title) !== undefined) {
       setText("Added");
     }
   },[])

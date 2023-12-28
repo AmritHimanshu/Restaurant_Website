@@ -24,8 +24,6 @@ const CartPage = () => {
     else localStorage.clear();
   }, []);
 
-  // console.log(addItem)
-
   useEffect(() => {
     let total = 0;
     {
@@ -38,9 +36,15 @@ const CartPage = () => {
 
 
   const handleQuantityChange = (id, action) => {
-    const updatedItems = addItem.map(item => {
+    const updatedItems = addItem.map((item, index) => {
       if (item.id === id) {
         const updatedQuantity = action === 'increment' ? item.quantity + 1 : item.quantity - 1;
+        if (updatedQuantity === 0) {
+          let items = localStorage.getItem('items');
+          let itemObj = JSON.parse(items);
+          itemObj.splice(index, 1);
+          localStorage.setItem('items', JSON.stringify(itemObj));
+        }
         return { ...item, quantity: Math.max(updatedQuantity, 0) };
       }
       return item;

@@ -29,12 +29,12 @@ const Menu = () => {
 
             const data = await res.json();
             setMenu(data);
-
+            
         } catch (error) {
             // console.log(error);
         }
     }
-
+    
     useEffect(() => {
 
         window.scrollTo(0, 0);
