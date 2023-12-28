@@ -20,7 +20,7 @@ const Menu = () => {
 
     const getMenu = async () => {
         try {
-            const res = await fetch('/getMenu', {
+            const res = await fetch('https://demo-restaurant-omega.vercel.app/getMenu', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
