@@ -36,7 +36,7 @@ const Register = () => {
 
     if (password !== cpassword) return window.alert("Password and Confirm Password not matched");
 
-    const res = await fetch('/register', {
+    const res = await fetch('https://demo-restaurant-omega.vercel.app/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
