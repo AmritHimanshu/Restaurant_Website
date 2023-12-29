@@ -60,6 +60,7 @@ router.post('/signin', async (req, res) => {
                 httpOnly: true,
                 secure: true,  // Mark as secure if using HTTPS
                 sameSite: 'None',  // Set SameSite attribute for cross-origin requests
+                path:'/',
             });
 
             if (isMatch) {
