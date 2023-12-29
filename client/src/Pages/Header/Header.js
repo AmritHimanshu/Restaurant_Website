@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, selectUser } from "../../features/userSlice";
 import { NavLink, Link } from "react-router-dom";
@@ -24,6 +24,14 @@ function NavBar() {
     setClick(!click);
     dispatch(logout());
   }
+
+  const [numberCart, setNumberCart] = useState();
+
+  useEffect(() => {
+    let items = localStorage.getItem('items');
+    let itemObj = JSON.parse(items);
+    setNumberCart(itemObj?.length);
+  },[])
 
   return (
     <>
@@ -80,11 +88,11 @@ function NavBar() {
             <li className="ml-5 w-[150px] flex items-center justify-between">
               {user && <NavLink
                 to={`/cart`}
-                className="header-icon nav-links hover:text-[30px] duration-300 text-white"
-                title="my cart"
+                className="header-icon nav-links text-white relative"
                 onClick={handleClick}
               >
-                <FaCartPlus/>
+                <div className="px-1 text-sm text-white bg-red-500 rounded-full absolute top-0 right-0">{numberCart}</div>
+                <FaCartPlus className="hover:scale-125 duration-300" title="my cart" />
               </NavLink>}
 
               <NavLink

@@ -9,7 +9,7 @@ const Login = () => {
 
   const callLogOut = async () => {
     try {
-      const res = await fetch('https://demo-restaurant-omega.vercel.app/logout', {
+      const res = await fetch('https://demo-restaurant-six.vercel.app/logout', {
         method: 'GET',
         headers: {
           Accept: 'application/json', // For cookies
@@ -54,7 +54,7 @@ const Login = () => {
 
     if (!email || !password) return window.alert("Fill all the fields");
 
-    const res = await fetch('https://demo-restaurant-omega.vercel.app/signin', {
+    const res = await fetch('https://demo-restaurant-six.vercel.app/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

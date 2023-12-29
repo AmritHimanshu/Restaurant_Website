@@ -40,7 +40,6 @@ function App() {
 
       if (res.status !== 200) {
         const error = new Error(res.error);
-        console.log(error);
         throw error;
       }
       
