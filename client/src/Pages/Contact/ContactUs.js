@@ -23,7 +23,6 @@ const Form = () => {
       }
       else {
         const data = await res.json();
-        console.log("data = " + data);
         setUserData({ ...userData, name: data.name, email: data.email, phone: data.phone });
       }
 
