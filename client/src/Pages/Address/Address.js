@@ -17,7 +17,7 @@ function Address() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('https://demo-restaurant-six.vercel.app/address', {
+    const res = await fetch('https://demo-restaurant-omega.vercel.app/address', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
