@@ -101,7 +101,7 @@ router.post('/address', authenticate, async (req, res) => {
 
     if (!houseNumber || !apartment || !pincode) { return res.status(422).json({ error: "Fill all the fields" }); }
 
-    const address = houseNumber + ', ' + apartment + ', ' + landmark + ', ' + 'pincode - ' + pincode + ', ' + 'Direction : ' + directions;
+    const address = houseNumber + ', ' + apartment + ', ' + landmark + ', ' + directions + ', ' + 'pincode - ' + pincode;
 
     try {
         const addressExists = req.rootUser.addresses.some(data => data.address === address);

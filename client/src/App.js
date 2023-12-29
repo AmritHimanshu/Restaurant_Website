@@ -22,6 +22,8 @@ import "./App.css";
 
 function App() {
 
+  // https://demo-restaurant-omega.vercel.app
+
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
