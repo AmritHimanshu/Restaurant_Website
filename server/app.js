@@ -13,7 +13,7 @@ require('./db/conn');
 // app.use(cors({ origin: true }));
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://demo-restaurant-six.vercel.app/',
     credentials: true,  // Enable credentials (cookies)
 }));
 
