@@ -58,7 +58,7 @@ router.post('/signin', async (req, res) => {
             res.cookie("jwtoken", Token, {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
-                secure: true,  // Mark as secure if using HTTPS
+                // secure: true,  // Mark as secure if using HTTPS
                 sameSite: 'None',  // Set SameSite attribute for cross-origin requests
                 path:'/',
             });
