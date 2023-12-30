@@ -60,7 +60,7 @@ const FoodCard = ({ id, title, price, image, func }) => {
           <div className='my-2 w-[8px] lg:w-[17px]'>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ16XLUqGo6JYBGyBy4ustCnmorFcjO_acwvH_SPngT&s" alt="" />
           </div>
-          <div className="text-[12px] lg:text-[16px] font-bold">
+          <div className="text-[12px] lg:text-[16px] text-black font-bold">
             {title}
           </div>
           <div className="text-[15px] text-blue">₹{price}</div>
