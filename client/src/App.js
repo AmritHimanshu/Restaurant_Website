@@ -55,10 +55,6 @@ function App() {
 
   useEffect(() => {
     getData();
-
-    const items = localStorage.getItem('items');
-    if (items) setCartItem(true);
-    else setCartItem(false);
   },[])
 
   return (
