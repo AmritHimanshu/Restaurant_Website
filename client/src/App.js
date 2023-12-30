@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "./features/userSlice";
@@ -27,8 +27,6 @@ function App() {
   const user = useSelector(selectUser);
 
   const dispatch = useDispatch();
-
-  const [cartItem, setCartItem] = useState(false);
 
   const getData = async () => {
     try {

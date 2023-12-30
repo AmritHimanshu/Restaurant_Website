@@ -34,12 +34,12 @@ const Menu = () => {
             const data = await res.json();
             setMenu(data);
             setLoading(false);
-            
+
         } catch (error) {
             // console.log(error);
         }
     }
-    
+
     useEffect(() => {
 
         window.scrollTo(0, 0);
@@ -54,7 +54,7 @@ const Menu = () => {
     }, []);
 
 
-    const [mealType, setMealType] = useState("Noodles");
+    const [mealType, setMealType] = useState("Soup");
 
     const selectMealType = (ev) => {
         // set design
@@ -84,7 +84,10 @@ const Menu = () => {
                         <div className="mealSelect">
 
                             {menu?.map((data, index) => (
-                                <button key={index} value={data.category} className={`mealButton`} onClick={selectMealType} >{data.category}</button>
+                                <div className="px-5 flex items-center border-r-2">
+                                    <img src={data.image} alt="" className="w-[35px] h-[35px] rounded-full" />
+                                    <button key={index} value={data.category} className={`mealButton`} onClick={selectMealType} >{data.category}</button>
+                                </div>
                             ))}
 
                             {/* <button value="Soup" className="mealButton mealActive" onClick={selectMealType} >Soup</button> */}

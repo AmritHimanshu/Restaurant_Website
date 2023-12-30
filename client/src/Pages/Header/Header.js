@@ -85,13 +85,13 @@ function NavBar() {
               </NavLink>
             </li>
 
-            <li className="ml-5 w-[150px] flex items-center justify-between">
+            <li className="ml-5 w-[150px] flex items-center md:justify-between">
               {user && <NavLink
                 to={`/cart`}
                 className="header-icon nav-links text-white relative"
                 onClick={handleClick}
               >
-                <div className="px-1 text-sm text-white bg-red-500 rounded-full absolute top-0 right-0">{numberCart}</div>
+                <div className="px-1 text-sm text-white bg-red-500 rounded-full absolute top-0 left-8">{numberCart}</div>
                 <FaCartPlus className="hover:scale-125 duration-300" title="my cart" />
               </NavLink>}
 
