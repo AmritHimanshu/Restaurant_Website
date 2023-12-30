@@ -72,7 +72,7 @@ const Menu = () => {
             <Header />
             <div id="menuPage" className="relative">
                 <div className="menuHeading">
-                    <div className="my-10 text-[30px] text-center font-bold">Our Menu</div>
+                    <div className="my-5 lg:my-10 text-[20px] lg:text-[30px] text-center text-neutral-600">----- Select Category -----</div>
                 </div>
 
                 {loading && <div className="h-[50vh] flex items-center justify-center">
@@ -80,13 +80,13 @@ const Menu = () => {
                 </div>}
 
                 {!loading && <div>
-                    <div className="w-[360px] lg:w-auto flex items-center justify-center my-[50px] mx-auto overflow-x-scroll lg:overflow-x-hidden topSection">
-                        <div className="w-auto ml-40 lg:ml-0 flex items-center justify-center mealSelect">
+                    <div className="w-[360px] lg:w-auto flex items-center justify-center mx-auto overflow-x-scroll lg:overflow-x-hidden topSection">
+                        <div className="w-auto ml-48 lg:ml-0 flex items-center justify-center mealSelect">
 
                             {menu?.map((data, index) => (
                                 <div key={index} className="px-5 flex items-center lg:border-x-2">
-                                    <img src={data.image} alt="" className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full" />
-                                    <button key={index} value={data.category} className="lg:text-[18px] min-w-max mealButton" onClick={selectMealType} >{data.category}</button>
+                                    <img src={data.image} alt="" className="w-[25px] h-[25px] lg:w-[35px] lg:h-[35px] rounded-full" />
+                                    <button key={index} value={data.category} className="text-[16px] lg:text-[18px] min-w-max mealButton" onClick={selectMealType} >{data.category}</button>
                                 </div>
                             ))}
 
@@ -94,7 +94,7 @@ const Menu = () => {
                         </div>
                     </div>
 
-                    <div className="mb-20 flex flex-col items-center space-y-5">
+                    <div className="mt-10 lg:mt-20 mb-20 flex flex-col items-center space-y-5">
                         {
                             menu?.map((food, index) => {
                                 if (food.category === mealType) {
