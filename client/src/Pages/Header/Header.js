@@ -5,7 +5,6 @@ import { logout, selectUser } from "../../features/userSlice";
 import { NavLink, Link } from "react-router-dom";
 import { FaHamburger } from "react-icons/fa";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { BiSolidUserCircle } from "react-icons/bi";
 import { FaCartPlus } from "react-icons/fa";
 
 import "./Header.css";
