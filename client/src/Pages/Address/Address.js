@@ -40,8 +40,8 @@ function Address() {
       address = addAddress;
       localStorage.setItem('address', JSON.stringify(address));
 
-      navigate("/payment");
       setLoading(false);
+      navigate("/payment");
     }
   };
 
