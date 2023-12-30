@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../features/userSlice";
 import Header from "../Header/Header";
 import FoodCard from "./components/FoodCard";
+import LoadingIcon from "../Loading/loading.png";
 import "../Menu/Menu.css";
 
 const Menu = () => {
@@ -12,6 +13,8 @@ const Menu = () => {
 
     const [cartLength, setCartLength] = useState();
 
+    const [loading, setLoading] = useState(false);
+
     const dataLen = (data) => {
         setCartLength(data);
     }
@@ -19,6 +22,7 @@ const Menu = () => {
     const [menu, setMenu] = useState();
 
     const getMenu = async () => {
+        setLoading(true);
         try {
             const res = await fetch('https://demo-restaurant-omega.vercel.app/getMenu', {
                 method: 'GET',
@@ -29,6 +33,7 @@ const Menu = () => {
 
             const data = await res.json();
             setMenu(data);
+            setLoading(false);
             
         } catch (error) {
             // console.log(error);
@@ -70,36 +75,42 @@ const Menu = () => {
                     <div className="my-10 text-[30px] text-center font-bold">Our Menu</div>
                 </div>
 
-                <div className="topSection">
-                    <div className="mealSelect">
+                {loading && <div className="h-[50vh] flex items-center justify-center">
+                    <img src={LoadingIcon} alt="" className="w-[50px] animate-bounce" />
+                </div>}
 
-                        {menu?.map((data, index) => (
-                            <button key={index} value={data.category} className={`mealButton`} onClick={selectMealType} >{data.category}</button>
-                        ))}
+                {!loading && <div>
+                    <div className="topSection">
+                        <div className="mealSelect">
 
-                        {/* <button value="Soup" className="mealButton mealActive" onClick={selectMealType} >Soup</button> */}
+                            {menu?.map((data, index) => (
+                                <button key={index} value={data.category} className={`mealButton`} onClick={selectMealType} >{data.category}</button>
+                            ))}
+
+                            {/* <button value="Soup" className="mealButton mealActive" onClick={selectMealType} >Soup</button> */}
+                        </div>
                     </div>
-                </div>
 
-                <div className="mb-20 flex flex-col items-center space-y-5">
-                    {
-                        menu?.map((food, index) => {
-                            if (food.category === mealType) {
-                                return food.items?.map((item) => (
-                                    <FoodCard key={item._id} id={item._id} title={item.name} price={item.price} image={item.image} func={dataLen} />
-                                ))
-                            }
-                        })
-                    }
-                </div>
-
-                {user && cartLength > 0 && <div className="px-2 lg:px-5 py-2 md:py-2 bg-blue flex flex-row md:flex-row items-center justify-between w-[350px] md:w-[600px] xl:w-[600px] rounded-md fixed bottom-1 left-[6%] md:left-[14%] lg:left-[22%] xl:left-[30%] 2xl:left-[34%] shadow-xl"
-                >
-                    <div className="text-[16px] text-white text-center">
-                        {cartLength} items added
+                    <div className="mb-20 flex flex-col items-center space-y-5">
+                        {
+                            menu?.map((food, index) => {
+                                if (food.category === mealType) {
+                                    return food.items?.map((item) => (
+                                        <FoodCard key={item._id} id={item._id} title={item.name} price={item.price} image={item.image} func={dataLen} />
+                                    ))
+                                }
+                            })
+                        }
                     </div>
-                    <Link to={`/cart`}>
-                        <div className="text-[15px] xl:text-[18px] text-white p-2 cursor-pointer hover:scale-105 hover:font-bold duration-300">View Cart</div></Link>
+
+                    {user && cartLength > 0 && <div className="px-2 lg:px-5 py-2 md:py-2 bg-blue flex flex-row md:flex-row items-center justify-between w-[350px] md:w-[600px] xl:w-[600px] rounded-md fixed bottom-1 left-[6%] md:left-[14%] lg:left-[22%] xl:left-[30%] 2xl:left-[34%] shadow-xl"
+                    >
+                        <div className="text-[16px] text-white text-center">
+                            {cartLength} items added
+                        </div>
+                        <Link to={`/cart`}>
+                            <div className="text-[15px] xl:text-[18px] text-white p-2 cursor-pointer hover:scale-105 hover:font-bold duration-300">View Cart</div></Link>
+                    </div>}
                 </div>}
 
             </div>
