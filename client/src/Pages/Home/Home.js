@@ -141,7 +141,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="bg-[#f6f6f6] bg-opacity-80 p-5 xl:p-10 space-y-10 xl:space-y-20">
+          {/* <div className="bg-[#f6f6f6] bg-opacity-80 p-5 xl:p-10 space-y-10 xl:space-y-20">
             <div className="text-[20px] sm:text-[25px] xl:text-[40px] 2xl:w-[50%] m-auto font-bold text-center">
               Making a reservation at Delicious restaurant is easy and takes just
               a couple of minutes.
@@ -162,7 +162,7 @@ function Home() {
                 <BookTable />
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="py-5 xl:py-10 bg-[#ffa39b] bg-opacity-0 space-y-5 xl:space-y-10">
             <div className="text-[25px] xl:text-[40px] font-bold text-center">Our Specials</div>
