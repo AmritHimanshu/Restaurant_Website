@@ -80,13 +80,13 @@ const Menu = () => {
                 </div>}
 
                 {!loading && <div>
-                    <div className="topSection">
-                        <div className="mealSelect">
+                    <div className="w-[360px] lg:w-auto flex items-center justify-center my-[50px] mx-auto overflow-x-scroll lg:overflow-x-hidden topSection">
+                        <div className="w-auto ml-40 lg:ml-0 flex items-center justify-center mealSelect">
 
                             {menu?.map((data, index) => (
-                                <div className="px-5 flex items-center border-r-2">
-                                    <img src={data.image} alt="" className="w-[35px] h-[35px] rounded-full" />
-                                    <button key={index} value={data.category} className={`mealButton`} onClick={selectMealType} >{data.category}</button>
+                                <div key={index} className="px-5 flex items-center lg:border-x-2">
+                                    <img src={data.image} alt="" className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full" />
+                                    <button key={index} value={data.category} className="lg:text-[18px] min-w-max mealButton" onClick={selectMealType} >{data.category}</button>
                                 </div>
                             ))}
 

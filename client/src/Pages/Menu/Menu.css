@@ -17,29 +17,9 @@
   margin: 20px auto;
 }
 
-#menuPage .topSection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 50px 150px;
-}
-
-#menuPage .topSection .mealSelect {
-  margin: 0 50px;
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
-
 #menuPage .topSection .mealSelect .mealButton {
-  color: rgb(146, 145, 145);
+  color: rgb(133, 133, 133);
   padding: 10px 10px;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.1rem;
   cursor: pointer;
   font-weight: 600;
   transition: 0.2s;
@@ -51,10 +31,11 @@
 
 #menuPage .topSection .mealSelect .mealActive {
   padding: 10px 10px;
+  border-bottom: none;
   color: black;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
   transition: 0.2s;
 }
 
