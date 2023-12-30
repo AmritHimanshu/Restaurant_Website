@@ -34,7 +34,7 @@ function Address() {
     }
     else {
       // alert(`${data.message}`);
-      const addAddress = houseNumber + ', ' + apartment + ', ' + landmark + ', ' + 'pincode - ' + pincode + ', ' + 'Direction : ' + directions;
+      const addAddress = houseNumber + ', ' + apartment + ', ' + landmark + ', ' + directions + ', ' + 'pincode - ' + pincode;
 
       let address = localStorage.getItem('address');
       address = addAddress;
