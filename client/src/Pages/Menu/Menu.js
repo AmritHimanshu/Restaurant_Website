@@ -80,8 +80,8 @@ const Menu = () => {
                 </div>}
 
                 {!loading && <div>
-                    <div className="w-[360px] lg:w-auto flex items-center justify-center mx-auto overflow-x-scroll lg:overflow-x-hidden topSection">
-                        <div className="w-auto ml-48 lg:ml-0 flex items-center justify-center mealSelect">
+                    <div className="w-[360px] lg:w-[1024px] lg:w-aut flex items-center justify-center mx-auto overflow-x-scroll lg:overflow-x-hidden rounded-xl shadow-[0px_8px_20px_-15px_rgba(0,0,0,0.5)] topSection">
+                        <div className="w-aut w-[1024px] ml-48 lg:ml-0 flex items-center justify-center rounded-xl  mealSelect">
 
                             {menu?.map((data, index) => (
                                 <div key={index} className="px-5 flex items-center lg:border-x-2">
