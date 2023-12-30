@@ -68,7 +68,7 @@ const FoodCard = ({ id, title, price, image, func }) => {
         <div className='relative'>
           <img src={image} alt="" className="w-[50px] h-[40px] lg:w-[110px] lg:h-[100px] rounded-xl" />
           <button
-            className="bg-white text-blue text-[12px] py-[1px] px-3 lg:py-[5px] cursor-pointer my-[5px] border-[1px] border-gray-300 rounded-md hover:scale-105 duration-300 absolute bottom-0 w-[100px] -left-[5px] lg:left-1 lg:-bottom-3"
+            className="bg-white text-blue text-[10px] lg:text-[12px] px-2 py-[4px] lg:py-[5px] cursor-pointer my-[5px] border-[1px] border-gray-300 rounded-md hover:scale-105 duration-300 absolute bottom-0 w-[60px] lg:w-[100px] -left-[5px] lg:left-1 lg:-bottom-3"
             onClick={handleOnClick}
           >
             {text}
