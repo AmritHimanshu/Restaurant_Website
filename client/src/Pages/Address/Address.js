@@ -41,8 +41,8 @@ function Address() {
       address = addAddress;
       localStorage.setItem('address', JSON.stringify(address));
 
-      setLoading(false);
       navigate("/payment");
+      setLoading(false);
     }
   };
 
