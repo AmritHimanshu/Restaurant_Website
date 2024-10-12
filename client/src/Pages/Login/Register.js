@@ -7,6 +7,8 @@ import registerImg from "./assets/login.svg";
 
 const Register = () => {
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -36,7 +38,7 @@ const Register = () => {
 
     if (password !== cpassword) return window.alert("Password and Confirm Password not matched");
 
-    const res = await fetch('https://demo-restaurant-omega.vercel.app/register', {
+    const res = await fetch(`${BASE_URL}/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

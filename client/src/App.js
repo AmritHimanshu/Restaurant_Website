@@ -22,7 +22,7 @@ import "./App.css";
 
 function App() {
 
-  // https://demo-restaurant-omega.vercel.app
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const user = useSelector(selectUser);
 
@@ -30,7 +30,7 @@ function App() {
 
   const getData = async () => {
     try {
-      const res = await fetch('https://demo-restaurant-omega.vercel.app/getData', {
+      const res = await fetch(`${BASE_URL}/getData`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import LoadingIcon from '../Loading/loading.png';
 
 function Address() {
+
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const [houseNumber, setHouseNumber] = useState('');
   const [apartment, setApartment] = useState('');
   const [pincode, setPincode] = useState('');
@@ -17,7 +20,7 @@ function Address() {
     e.preventDefault();
     setLoading(true);
 
-    const res = await fetch('https://demo-restaurant-omega.vercel.app/address', {
+    const res = await fetch(`${BASE_URL}/address`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

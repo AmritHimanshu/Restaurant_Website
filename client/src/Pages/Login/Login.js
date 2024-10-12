@@ -7,9 +7,11 @@ import loginImg from "./assets/login.svg";
 
 const Login = () => {
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const callLogOut = async () => {
     try {
-      const res = await fetch('https://demo-restaurant-omega.vercel.app/logout', {
+      const res = await fetch(`${BASE_URL}/logout`, {
         method: 'GET',
         headers: {
           Accept: 'application/json', // For cookies
@@ -54,7 +56,7 @@ const Login = () => {
 
     if (!email || !password) return window.alert("Fill all the fields");
 
-    const res = await fetch('https://demo-restaurant-omega.vercel.app/signin', {
+    const res = await fetch(`${BASE_URL}/signin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

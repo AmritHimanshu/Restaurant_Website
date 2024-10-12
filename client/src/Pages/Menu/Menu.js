@@ -9,6 +9,8 @@ import "../Menu/Menu.css";
 
 const Menu = () => {
 
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+
     const user = useSelector(selectUser);
 
     const [cartLength, setCartLength] = useState();
@@ -24,7 +26,7 @@ const Menu = () => {
     const getMenu = async () => {
         setLoading(true);
         try {
-            const res = await fetch('https://demo-restaurant-omega.vercel.app/getMenu', {
+            const res = await fetch(`${BASE_URL}/getMenu`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

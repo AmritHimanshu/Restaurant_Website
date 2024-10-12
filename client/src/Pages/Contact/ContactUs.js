@@ -5,11 +5,13 @@ import Footer from "../Footer/Footer";
 
 const Form = () => {
 
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+
   const [userData, setUserData] = useState({ name: '', email: '', phone: '', message: '' });
 
   const getData = async () => {
     try {
-      const res = await fetch('https://demo-restaurant-omega.vercel.app/getData', {
+      const res = await fetch(`${BASE_URL}/getData`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -47,7 +49,7 @@ const Form = () => {
 
     const { name, email, phone, message } = userData;
 
-    const res = await fetch('/contact', {
+    const res = await fetch(`${BASE_URL}/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

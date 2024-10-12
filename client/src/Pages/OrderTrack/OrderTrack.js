@@ -28,11 +28,11 @@ function OrderTrack() {
 
   useEffect(() => {
     let total = 0;
-    {
+    // {
       addItem && addItem.forEach((item) => {
         total += item.price * item.quantity;
       });
-    }
+    // }
 
     setGrandTotal(total);
   }, [addItem])
