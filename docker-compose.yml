@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: himanshu582/restaurant-client-k8:v1
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: himanshu582/restaurant-server-k8:v1
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
